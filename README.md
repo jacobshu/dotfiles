@@ -10,8 +10,7 @@ A repository to host various configuration files for future use.
 4. Prettier
 5. zsh
 
-## Other Files 
+## Templating 
 
-This repo will also include scripts to manage various system tasks, e.g.:
-- automating setup on a new system
-- automating frequent tasks
+This repository is templated from [Rosco Kalis's dotfiles](https://github.com/rkalis/dotfiles) covered in [this blog post](https://kalis.me/dotfiles-automating-macos-system-configuration/). 
+The scripts that run everything are almost entirely his. 
