@@ -9,19 +9,23 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-"" Plugins
+" Plugins: {{{
+
 call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'joshdick/onedark.vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'itchyny/vim-gitbranch'
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug '~/dev/synthwave'
 
 call plug#end()
 
+" }}}
+" Colors: {{{
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -36,17 +40,68 @@ endif
 
 set background=dark
 
-" let g:synthwave_contrast_dark = 'hard'
+let g:synthwave_sign_column = 'dark0'
 
 colorscheme synthwave 
+" }}}
+" Statusline: {{{
+set statusline=
+set statusline+=%<\                          " cut at start
+set statusline+=%#StatusLinePurple#          " color switch >> StatusLinePurple
+set statusline+=\ \ [\ %n%H%M%R%W\ ]\ \      " flags and buf no
+set statusline+=%#StatusLineGreen#\          " switch color >> StatusLineGreen
+set statusline+=\ %-50f\                     " path
+set statusline+=%#StatusLineYellow#\         " switch color >> StatusLineYellow
+set statusline+=%(%-30{gitbranch#name()}%)   " git branch
+set statusline+=\ \ \ \ \ \ \ \ \            " add spacing for non-git appearance
+set statusline+=%#StatusLineBlue#\           " switch color >> StatusLineBlue
+set statusline+=%=                           " justify right
+set statusline+=%#Error#                     " color switch >> Error
+set statusline+=\ \ \ \ %Y\ \ \ \            " file type
+set statusline+=%#Special#\                  " color switch >> Special 
+set statusline+=%5p%%                        " percentage of file
+set statusline+=\ \ \ \                      " right padding
+" }}}
+" General Settings: {{{
+" Allow ftplugins to modify behavior according to filetype
+filetype plugin on
 
+" Absolute + relative line numbering
+set number relativenumber
 
 "" Display leader while waiting for command
 set showcmd
+" }}}
+" Mappings: {{{
+" Remove <space> mapping and remap <leader>
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 
-"" Reload vimr configuration file
+" Remap <esc> in insert mode
+inoremap kj <esc>
+
+" Remap <esc> in command mode
+cnoremap kj <C-C>
+
+" Edit vimrc file 
+nnoremap <Leader>ve :edit $MYVIMRC<CR>
+
+" Reload vimrc configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 
+" Save and quit
+nnoremap <Leader>q :wq<CR>
+
+" Save
+nnoremap <Leader>s :w<CR>
+
+" Toggle NERDTree
+nnoremap <silent> <Leader>t :NERDTreeToggle<CR>
+
+" Cycle through open windows
+noremap <Leader><Tab> <C-w>w
+" }}}
+" CoC Settings: {{{
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -208,3 +263,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" }}}
