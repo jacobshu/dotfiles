@@ -63,43 +63,25 @@ set statusline+=%5p%%                        " percentage of file
 set statusline+=\ \ \ \                      " right padding
 " }}}
 " General Settings: {{{
-" Allow ftplugins to modify behavior according to filetype
-filetype plugin on
-
-" Absolute + relative line numbering
-set number relativenumber
-
-"" Display leader while waiting for command
-set showcmd
+filetype plugin on                " Allow ftplugins to modify behavior according to filetype
+set foldmethod syntax             " Syntax folding for all non-vim files
+set number relativenumber         " Absolute + relative line numbering
+set inccommand=nosplit            " Show substitute and search results incrementally
+set incsearch                     " Show search matches incrementally
+set hlsearch                      " Highlight search results
+set showcmd                       " Display leader while waiting for command
 " }}}
 " Mappings: {{{
-" Remove <space> mapping and remap <leader>
-nnoremap <SPACE> <Nop>
-let mapleader = " "
-
-" Remap <esc> in insert mode
-inoremap kj <esc>
-
-" Remap <esc> in command mode
-cnoremap kj <C-C>
-
-" Edit vimrc file 
-nnoremap <Leader>ve :edit $MYVIMRC<CR>
-
-" Reload vimrc configuration file
-nnoremap <Leader>vr :source $MYVIMRC<CR>
-
-" Save and quit
-nnoremap <Leader>q :wq<CR>
-
-" Save
-nnoremap <Leader>s :w<CR>
-
-" Toggle NERDTree
-nnoremap <silent> <Leader>t :NERDTreeToggle<CR>
-
-" Cycle through open windows
-noremap <Leader><Tab> <C-w>w
+nnoremap <SPACE> <Nop>                           " Remove <space> mapping
+let mapleader = " "                              " Map <leader> to <space>
+inoremap kj <esc>                                " Remap <esc> in insert mode
+cnoremap kj <C-C>                                " Remap <esc> in command mode
+nnoremap <Leader>ve :edit $MYVIMRC<CR>           " Edit vimrc file 
+nnoremap <Leader>vr :source $MYVIMRC<CR>         " Reload vimrc configuration file
+nnoremap <Leader>q :wq<CR>                       " Save and quit
+nnoremap <Leader>w :w<CR>                        " Save
+nnoremap <silent> <Leader>t :NERDTreeToggle<CR>  " Toggle NERDTree
+noremap <Leader><Tab> <C-w>w                     " Cycle through open windows
 " }}}
 " CoC Settings: {{{
 " TextEdit might fail if hidden is not set.
