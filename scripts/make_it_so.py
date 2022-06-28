@@ -37,8 +37,16 @@ docker = subprocess.run(['open', '/Applications/Docker.app'], stdout=subprocess.
 # Open an HTTPS tunnel on port 5003 with ngrok
 http_tunnel = ngrok.connect('5003', bind_tls=True)
 
+
+def log_event_callback(log):
+    print(str(log))
+
+
 # Get the URL from ngrok without the protocol
 public_url = http_tunnel.public_url[8:]
+
+# Pass logging callback to ngrok
+ngrok.conf.get_default().log_event_callback = log_event_callback
 
 # Write the public ngrok URL to the pkg-mgmt .env file
 pkg_env = os.getenv('PKG_ENV')
@@ -47,6 +55,7 @@ for line in fileinput.input(pkg_env, inplace=True):
         sys.stdout.write('SERVER=' + public_url + '\n')
     else:
         sys.stdout.write(line)
+
 
 print('localhost proxied at ' + http_tunnel.public_url)
 print('1. Start the swmdb container via Docker Dashboard')
