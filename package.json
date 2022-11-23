@@ -1,0 +1,26 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "A repository to host various configuration files for future use.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobshu/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles",
+    "zsh",
+    "macos",
+    "bash"
+  ],
+  "author": "Jacob Shulenberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobshu/dotfiles/issues"
+  },
+  "homepage": "https://github.com/jacobshu/dotfiles#readme"
+}
