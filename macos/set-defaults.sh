@@ -22,6 +22,9 @@ defaults write com.apple.Finder FXPreferredViewStyle clmv
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 
+# Show hidden files.
+defaults write com.apple.finder AppleShowAllFiles true
+
 # Set a really fast key repeat.
 defaults write NSGlobalDomain KeyRepeat -int 1
 
@@ -36,8 +39,8 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
 
 # Create and set screenshot location
-mkdir -p ~/Pictures/Screenshots
-defaults write com.apple.screencapture location ~/Pictures/Screenshots
+mkdir -p ~/Screenshots
+defaults write com.apple.screencapture location ~/Screenshots
 
 # Run the screensaver if we're in the bottom-left hot corner.
 defaults write com.apple.dock wvous-bl-corner -int 5
@@ -45,7 +48,7 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Configure iTerm to use preferences in dotfiles directory
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.dotfiles/config/iterm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dev/dotfiles/config/iterm"
 defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -bool false
 
 # Hide Safari's bookmark bar.
