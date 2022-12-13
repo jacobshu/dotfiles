@@ -7,4 +7,3 @@ const paletteFile = join(__dirname, "..", "/config/synthwavePalette.json");
 
 const palette = JSON.parse(fs.readFileSync(paletteFile));
 console.log(palette);
-

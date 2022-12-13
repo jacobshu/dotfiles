@@ -1,9 +1,9 @@
 # symlinks for various dotfiles
 # the target paths are all relative to the HOME directory
 [[dotfiles]]
-source = "./synthwave85.json"
+source = "./config/synthwave85.json"
 target = ".fleet/themes"
 
 [[dotfiles]]
-source = "./zshrc"
+source = "./config/zshrc"
 target = ".zshrc"
