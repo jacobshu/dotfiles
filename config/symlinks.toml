@@ -5,5 +5,5 @@ source = "./config/synthwave85.json"
 target = ".fleet/themes"
 
 [[dotfiles]]
-source = "./config/zshrc"
-target = ".zshrc"
+source = "./config/earth.yaml"
+target = ".warp/themes/earth.yaml"
