@@ -1,9 +1,15 @@
 # symlinks for various dotfiles
 # the target paths are all relative to the HOME directory
-[[dotfiles]]
-source = "./config/synthwave85.json"
-target = ".fleet/themes"
+#[[dotfiles]]
+#source = "../config/synthwave85.json"
+#target = ".fleet/themes"
 
 [[dotfiles]]
-source = "./config/earth.yaml"
-target = ".warp/themes/earth.yaml"
+source = "../config/earth.yaml"
+target_dir = ".warp/themes"
+target_file = "earth.yaml"
+
+[[dotfiles]]
+source = "../config/.zshrc"
+target_dir = ""
+target_file = ".zshrc"

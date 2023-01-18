@@ -1,27 +1,27 @@
-foreground: "#c2c7cc"   #shadow200
-details: "earthy"
+foreground: "#b5c1cb"   #shadow200
+details: "darker"
 background:
-  top: "#2f333a"        #twilight900
-  bottom: "#1a1d21"     #shadow900
+  top: "#13232e"        #twilight900
+  bottom: "#0f141c"     #shadow900
 accent:
-  left: "#a38eaa"       #dusk700
-  right: "#8caab8"      #twilight050
+  left: "#9d46c2"       #dusk700
+  right: "#17bbe6"      #twilight100
 terminal_colors:
   bright:
-    black: "#737a83"    #shadow500
-    blue: "#d3dfe9"     #pool100
-    cyan: "#c8e0e6"     #twilight100
-    green: "#cfdbd2"    #shade100
-    magenta: "#d3cbd7"  #dusk100
-    red: "#e5d3db"      #dawn100
-    white: "#edeff0"    #shadow050
-    yellow: "#f7e6bc"   #sun050
+    black: "#5e6c80"    #shadow500
+    blue: "#1a78de"     #pool100
+    cyan: "#17bbe6"     #twilight100
+    green: "#41db5e"    #shade100
+    magenta: "#a949da"  #dusk100
+    red: "#e55b9a"      #dawn100
+    white: "#eaeef0"    #shadow050
+    yellow: "#dfcd19"   #sun050
   normal:
-    black: "#454a52"    #shadow700
-    blue: "#8a97af"     #pool300
-    cyan: "#8caab8"     #twilight300
-    green: "#91ad98"    #shade300
-    magenta: "#a38eaa"  #dusk300
-    red: "#bc8e99"      #dawn300
-    white: "#c2c7cc"    #shadow200
-    yellow: "#cdbb80"   #sun300
+    black: "#313c4e"    #shadow700
+    blue: "#2556af"     #pool300
+    cyan: "#218ab8"     #twilight300
+    green: "#3dad5a"    #shade300
+    magenta: "#8e41aa"  #dusk300
+    red: "#bc4764"      #dawn300
+    white: "#b5c1cb"    #shadow200
+    yellow: "#beb21b"   #sun300
