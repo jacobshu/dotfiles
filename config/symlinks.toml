@@ -10,6 +10,11 @@ target_dir = ".warp/themes"
 target_file = "earth.yaml"
 
 [[dotfiles]]
+source = "../config/nord.yaml"
+target_dir = ".warp/themes"
+target_file = "nord.yaml"
+
+[[dotfiles]]
 source = "../config/.zshrc"
 target_dir = ""
 target_file = ".zshrc"
