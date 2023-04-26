@@ -5,6 +5,11 @@
 #target = ".fleet/themes"
 
 [[dotfiles]]
+source = "../config/nightfox.yaml"
+target_dir = ".warp/themes"
+target_file = "nightfox.yaml"
+
+[[dotfiles]]
 source = "../config/earth.yaml"
 target_dir = ".warp/themes"
 target_file = "earth.yaml"
