@@ -1,0 +1,3 @@
+require("jacobshu")
+print("Initializing...")
+
