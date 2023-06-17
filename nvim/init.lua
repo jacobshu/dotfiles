@@ -1,3 +1,2 @@
 require("jacobshu")
-print("Initializing...")
 

@@ -1,2 +1,6 @@
+print("Initializing...")
 require("jacobshu.remap")
-print("Initializing jacobshu...")
+require("jacobshu.lazy")
+
+vim.cmd("colorscheme nightfox")
+
