@@ -10,9 +10,9 @@ target_dir = ".warp/themes"
 target_file = "nightfox.yaml"
 
 [[dotfiles]]
-source = "../config/earth.yaml"
+source = "../config/forestfox.yaml"
 target_dir = ".warp/themes"
-target_file = "earth.yaml"
+target_file = "forestfox.yaml"
 
 [[dotfiles]]
 source = "../config/nord.yaml"
