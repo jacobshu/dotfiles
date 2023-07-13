@@ -23,3 +23,8 @@ target_file = "nord.yaml"
 source = "../config/.zshrc"
 target_dir = ""
 target_file = ".zshrc"
+
+[[dotfiles]]
+source = "../nvim"
+target_dir = "Desktop/nvim"
+target_file = ""
