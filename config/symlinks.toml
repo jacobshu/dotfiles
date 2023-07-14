@@ -1,30 +1,23 @@
 # symlinks for various dotfiles
 # the target paths are all relative to the HOME directory
-#[[dotfiles]]
-#source = "../config/synthwave85.json"
-#target = ".fleet/themes"
 
 [[dotfiles]]
 source = "../config/nightfox.yaml"
-target_dir = ".warp/themes"
-target_file = "nightfox.yaml"
+target = ".warp/themes/nightfox.yaml"
 
 [[dotfiles]]
 source = "../config/forestfox.yaml"
-target_dir = ".warp/themes"
-target_file = "forestfox.yaml"
+target = ".warp/themes/forestfox.yaml"
 
 [[dotfiles]]
 source = "../config/nord.yaml"
-target_dir = ".warp/themes"
-target_file = "nord.yaml"
+target = ".warp/themes/nord.yaml"
 
 [[dotfiles]]
 source = "../config/.zshrc"
-target_dir = ""
-target_file = ".zshrc"
+target = ".zshrc"
 
 [[dotfiles]]
 source = "../nvim"
-target_dir = "Desktop/nvim"
-target_file = ""
+target = ".config/nvim"
+
