@@ -107,6 +107,15 @@ alias simulator='open /Applications/Xcode.app/Contents/Developer/Applications/Si
 alias dontbestupid='open -n /Applications/Visual\ Studio.app/Contents/MacOS/VisualStudio'
 alias makeitso='python3 /Users/dev/dotfiles/scripts/make_it_so.py'
 
+woffer () {
+  for file in $2/*.$1; do 
+    [ -f "$file" ] || continue
+    woff2_compress $file; 
+  done
+  mkdir $2/woff
+  for file in $2/*.woff2; do mv $file $2/woff; done
+}
+
 follow () {
   curl -s -L -D - "$1" -o /dev/null -w '%{url_effective}'
 }
