@@ -1,0 +1,73 @@
+format = """
+[░▒▓](cyan)\
+[  ](fg:black bg:cyan)\
+[▓▒░](cyan)\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$php\
+$time\
+\n$character"""
+
+[directory]
+style = "fg:yellow"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:blue"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = ""
+format = '[[($all_status$ahead_behind )](fg:blue)]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:green"
+format = '[ [$symbol ($version) ](fg:green)]($style)'
+
+[rust]
+symbol = ""
+style = "fg:red"
+format = '[ [$symbol ($version) ](fg:red)]($style)'
+
+[golang]
+symbol = ""
+style = "fg:red"
+format = '[ [$symbol ($version) ](fg:red)]($style)'
+
+[php]
+symbol = ""
+style = ""
+format = '[ [$symbol ($version) ](fg:red)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:purple"
+format = '[ [ $time ](fg:purple)]($style)'
+
+# Get editor completions based on the config schema
+# '' = 'https://starship.rs/config-schema.json'
+
+# Disables the custom module
+[custom]
+disabled = false
+
+[line_break]
+disabled = true
+
+[battery]
+disabled = true
