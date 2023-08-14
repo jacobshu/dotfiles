@@ -14,6 +14,10 @@ source = "../config/nord.yaml"
 target = ".warp/themes/nord.yaml"
 
 [[dotfiles]]
+source = "../config/starship.toml"
+target = ".config/starship.toml"
+
+[[dotfiles]]
 source = "../config/.zshrc"
 target = ".zshrc"
 
