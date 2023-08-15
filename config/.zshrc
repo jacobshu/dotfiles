@@ -98,14 +98,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ohmyzsh="code ~/.oh-my-zsh"
-alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
 alias mongod-start='brew services run mongodb-community'
 alias mongod-status='brew services list'
 alias mongod-stop='brew services stop mongodb-community'
 alias simulator='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
 alias dontbestupid='open -n /Applications/Visual\ Studio.app/Contents/MacOS/VisualStudio'
-alias makeitso='python3 /Users/dev/dotfiles/scripts/make_it_so.py'
 
 woffer () {
   for file in $2/*.$1; do 
@@ -122,10 +121,6 @@ follow () {
 
 onPort () {
   lsof -nP -iTCP -sTCP:LISTEN | grep $1
-}
-
-grab () {
-  python3 /Users/jacobshu/dev/seotools/grab.py $1
 }
 
 eval "$(starship init zsh)"
