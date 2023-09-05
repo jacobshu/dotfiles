@@ -2,5 +2,5 @@ require("jacobshu.remap")
 require("jacobshu.lazy")
 require("jacobshu.set")
 
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme everforest")
 
