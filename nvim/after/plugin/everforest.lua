@@ -26,7 +26,7 @@ require("everforest").setup({
    
     palette.grey0        = "#738478"
     palette.grey1        = "#7f928d"
-    palette.grey2        = "#95a8a2"    
+    palette.grey2        = "#95a8a2"
    
     palette.statusline1  = "#7eb365"
     palette.statusline2  = "#788492"
