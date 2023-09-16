@@ -1,9 +1,21 @@
 # dotfiles
 
-A repository to host various configuration files for future use. 
+My personal dotfiles and local tools. 
 
-## Process
+## Tour
 
-This is in flux currently. The target system will be to have a properly versioned Rust CLI that can be downloaded and contains all the code necessary to bootstrap a system.
+### Config
 
+Various configuration files to be symlinked and used during setup.
 
+### hew
+
+Commandline utility for various internal tools. Written initially in Rust (`/rust` directory) and now in Go (`go`).
+
+### macos
+
+Script for setting macOS defaults.
+
+### nvim
+
+Full config for NeoVim. 
