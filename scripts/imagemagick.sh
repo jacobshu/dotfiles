@@ -69,11 +69,11 @@ optimize_to_webp() {
   #$input_dir=$1
   #$output_dir=$1
   resize_percent=$1 
-  cd "/Users/jacobshu/Desktop/highlights" #$input_dir
+  cd "/Users/jacobshu/Desktop/sb/team-square" #$input_dir
   for file in *; do
     mogrify \
       -resize "${resize_percent}%" \
-      -path "/Users/jacobshu/Desktop/optimized" \
+      -path "/Users/jacobshu/Desktop/sb/team-hyper" \
       -filter Triangle \
       -define filter:support=2 \
       -unsharp 0.25x0.08+8.3+0.045 \
@@ -87,11 +87,25 @@ optimize_to_webp() {
       -define png:exclude-chunk=all \
       -interlace none \
       -colorspace sRGB \
+      -strip \
       -format webp \
       -verbose \
       ${file}
   done
 }
+
+
+resize() {
+  cd "/Users/jacobshu/Desktop/sb/team-optimized"
+  for file in *; do
+    mogrify \
+      -crop "x2498" \
+      -path "/Users/jacobshu/Desktop/sb/team-square" \
+      -verbose \
+      ${file}
+  done
+}
+
 
 if declare -f "$1" > /dev/null
 then
