@@ -25,3 +25,6 @@ target = ".zshrc"
 source = "../nvim"
 target = ".config/nvim"
 
+[[dotfiles]]
+source = "../config/typioca.conf"
+target = "./Library/Application Support/typioca/typioca.conf"
