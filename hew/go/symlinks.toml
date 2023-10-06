@@ -1,5 +1,6 @@
 # symlinks for various dotfiles
 # the target paths are all relative to the HOME directory
+version = "1.0"
 
 [[dotfiles]]
 source = "../config/nightfox.yaml"
