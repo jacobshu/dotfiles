@@ -128,6 +128,8 @@ eval "$(starship init zsh)"
 # For VS
 export GOOGLE_APPLICATION_CREDENTIALS=/Users/jacobshu/dev/bn-modern/SwmServerTests/gv.json
 export PATH="$PATH:$HOME/flutter/bin"
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 # Setup for Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
