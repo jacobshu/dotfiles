@@ -36,6 +36,13 @@ require("lazy").setup(
     "mbbill/undotree",
     "tpope/vim-fugitive",
     {
+      'numToStr/Comment.nvim',
+      opts = {
+        -- add any options here
+      },
+      lazy = false,
+    },
+    {
       "VonHeikemen/lsp-zero.nvim",
       branch = "v3.x",
       dependencies = {
