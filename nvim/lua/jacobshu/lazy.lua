@@ -70,6 +70,8 @@ require("lazy").setup(
         'stevearc/dressing.nvim', -- optional for vim.ui.select
       },
       config = true,
-    }
+    },
+    { 'mfussenegger/nvim-dap' },
+    { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   }
 )

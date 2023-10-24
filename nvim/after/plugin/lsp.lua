@@ -79,6 +79,11 @@ require("mason-lspconfig").setup({
         },
       })
     end,
+    omnisharp = function()
+      return {
+          cmd = { "omnisharp" },
+      }
+    end,
   }
 })
 
