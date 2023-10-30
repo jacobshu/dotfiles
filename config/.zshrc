@@ -123,6 +123,14 @@ onPort () {
   lsof -nP -iTCP -sTCP:LISTEN | grep $1
 }
 
+x () {
+  exa --long --no-permissions --no-user --icons $1
+}
+
+xt () {
+  exa --long --no-permissions --no-user --icons --tree $1
+}
+
 eval "$(starship init zsh)"
 
 # For VS
