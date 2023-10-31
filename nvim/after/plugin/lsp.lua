@@ -50,7 +50,6 @@ require("mason-lspconfig").setup({
     "mdx_analyzer",
     "omnisharp",
     "rust_analyzer",
-    "sqlls",
     "svelte",
     "tsserver",
     "volar",
