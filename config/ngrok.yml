@@ -5,14 +5,17 @@ console_ui_color: transparent
 
 log_level: info
 log_format: json
-log: stdout
+log: false # stdout
 region: us
 update_check: false
 version: 2
 tunnels:
-  swmlive:
-    addr: "api.swbuildnet.com"
+  swmlocal:
+    addr: localhost:5003
     schemes:
       - https
-    host_header: "swbuildnet.com"
-    proto: https
+    proto: http
+    response_header:
+      add:
+        - "Access-Control-Allow-Origin:*"
+        - "Access-Control-Allow-Headers:*"
