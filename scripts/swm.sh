@@ -18,15 +18,15 @@ if [[ -z $session_exists ]]; then
 
   # create new window for background processes and setup panes
   tmux new-window -t $session:1 -n "dev-procs"
-  tmux split-window -hf -t $docker
+  tmux split-window -vf -t $docker
   tmux split-window -v -t $api
   tmux split-window -v -t $docker
 
-  tmux send-keys -t "nvim" "cd $project_dir/shiprec && nvim ." Enter
-  tmux send-keys -t $docker "docker run swmdb" Enter
-  tmux send-keys -t $api "cd $project_dir/API" Enter "dotnet run"
-  tmux send-keys -t $ngrok "ngrok http localhost:5003" Enter
-  tmux send-keys -t $vue "cd $projcect_dir/shiprec" Enter "pnpm run dev" Enter
+  tmux send-keys -t "nvim" "cd ${project_dir}/shiprec && nvim ." Enter
+  tmux send-keys -t $docker "docker start --attach swmdb" Enter
+  tmux send-keys -t $api "cd ${project_dir}/API" Enter "dotnet run" Enter
+  tmux send-keys -t $ngrok 'ngrok http https://localhost:5003 --response-header-add "Access-Control-Allow-Origin: *" --response-header-add "Access-Control-Allow-Headers: *"' Enter
+  tmux send-keys -t $vue "cd ${project_dir}/shiprec" Enter "pnpm run dev" Enter
 fi
 
 # Attach Session, on the Main window
