@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
+    -- themes
     "EdenEast/nightfox.nvim",
     {
       "neanias/everforest-nvim",
@@ -22,6 +23,8 @@ require("lazy").setup(
       lazy = false,
       priority = 1000 -- make sure to load this before all the other start plugins
     },
+
+    -- tools for moving around
     {
       "nvim-telescope/telescope.nvim",
       dependencies = { "nvim-lua/plenary.nvim" }
@@ -33,6 +36,8 @@ require("lazy").setup(
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "nvim-treesitter/playground",
     "theprimeagen/harpoon",
+
+    -- editing and version control
     "mbbill/undotree",
     "tpope/vim-fugitive",
     {
@@ -50,6 +55,9 @@ require("lazy").setup(
       },
       lazy = false,
     },
+
+    -- copilot & lsp
+    "https://github.com/github/copilot.vim.git",
     {
       "VonHeikemen/lsp-zero.nvim",
       branch = "v3.x",
