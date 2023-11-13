@@ -45,7 +45,7 @@ require("lazy").setup(
       version = "*", -- Use for stability; omit to use `main` branch for the latest features
       event = "VeryLazy",
       config = function()
-          require("nvim-surround").setup({})
+        require("nvim-surround").setup({})
       end
     },
     {
@@ -57,7 +57,25 @@ require("lazy").setup(
     },
 
     -- copilot & lsp
-    "https://github.com/github/copilot.vim.git",
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      opts = {
+        panel = {
+          auto_refresh = true,
+        },
+        suggestion = {
+          auto_trigger = false,
+          keymap = {
+            accept = "<C-l>",
+            next = "<C-]>",
+            prev = "<C-[>",
+            dismiss = "Esc",
+          },
+        },
+      },
+    },
     {
       "VonHeikemen/lsp-zero.nvim",
       branch = "v3.x",
@@ -88,6 +106,6 @@ require("lazy").setup(
       config = true,
     },
     { 'mfussenegger/nvim-dap' },
-    { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    { "rcarriga/nvim-dap-ui",            requires = { "mfussenegger/nvim-dap" } }
   }
 )
