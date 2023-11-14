@@ -69,9 +69,9 @@ require("lazy").setup(
           auto_trigger = false,
           keymap = {
             accept = "<C-l>",
-            next = "<C-]>",
-            prev = "<C-[>",
-            dismiss = "Esc",
+            next = "<C-j>",
+            prev = "<C-k>",
+            dismiss = "C-[",
           },
         },
       },
