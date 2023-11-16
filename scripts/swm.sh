@@ -23,7 +23,7 @@ if [[ -z $session_exists ]]; then
   tmux split-window -v -t $docker
 
   tmux send-keys -t "nvim" "cd ${project_dir}/shiprec && nvim ." Enter
-  tmux send-keys -t $docker "docker start --attach swmdb" Enter
+  tmux send-keys -t $docker "docker start --attach swm" Enter
   tmux send-keys -t $api "cd ${project_dir}/API" Enter "dotnet run" Enter
   tmux send-keys -t $ngrok 'ngrok http https://localhost:5003 --response-header-add "Access-Control-Allow-Origin: *" --response-header-add "Access-Control-Allow-Headers: *"' Enter
   tmux send-keys -t $vue "cd ${project_dir}/shiprec" Enter "pnpm run dev" Enter
