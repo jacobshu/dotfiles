@@ -52,7 +52,7 @@ require("mason-lspconfig").setup({
     "omnisharp",
     "rust_analyzer",
     "svelte",
-    "tsserver",
+    -- "tsserver",
     "volar",
     --"gofumpt",
     --"prettier",
