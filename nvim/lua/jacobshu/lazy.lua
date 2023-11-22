@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
-    -- themes
+    -- themes and styling
     "EdenEast/nightfox.nvim",
     {
       "neanias/everforest-nvim",
@@ -23,6 +23,7 @@ require("lazy").setup(
       lazy = false,
       priority = 1000 -- make sure to load this before all the other start plugins
     },
+    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
     -- tools for moving around
     {
@@ -31,7 +32,7 @@ require("lazy").setup(
     },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" }
+      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
     },
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "nvim-treesitter/playground",
