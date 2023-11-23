@@ -1,31 +1,21 @@
 -- Forestfox config for lualine
-
--- stylua: ignore
-local colors = {
-  blue   = '#78b1bd',
-  cyan   = '#7bc29a',
-  black  = '#232b31',
-  white  = '#4f4f41',
-  red    = '#da7280',
-  violet = '#d491b5',
-  grey   = '#95a8a2',
-}
+local ff = require('jacobshu/forestfox')
 
 local ff_theme = {
   normal = {
-    a = { fg = colors.black, bg = colors.cyan },
-    b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.black, bg = colors.black },
+    a = { fg = ff.bg0, bg = ff.aqua },
+    b = { fg = ff.grey2, bg = ff.bg2 },
+    c = { fg = ff.bg0, bg = ff.bg0 },
   },
 
-  insert = { a = { fg = colors.black, bg = colors.blue } },
-  visual = { a = { fg = colors.black, bg = colors.cyan } },
-  replace = { a = { fg = colors.black, bg = colors.red } },
+  insert = { a = { fg = ff.bg0, bg = ff.yellow } },
+  visual = { a = { fg = ff.grey2, bg = ff.bg_green } },
+  replace = { a = { fg = ff.bg0, bg = ff.bg_red } },
 
   inactive = {
-    a = { fg = colors.white, bg = colors.black },
-    b = { fg = colors.white, bg = colors.black },
-    c = { fg = colors.black, bg = colors.black },
+    a = { fg = ff.grey2, bg = ff.bg0 },
+    b = { fg = ff.grey2, bg = ff.bg0 },
+    c = { fg = ff.bg0, bg = ff.bg0 },
   },
 }
 
