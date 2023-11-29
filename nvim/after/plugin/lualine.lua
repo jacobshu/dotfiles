@@ -3,13 +3,21 @@ local ff = require('jacobshu/forestfox')
 
 local ff_theme = {
   normal = {
-    a = { fg = ff.bg0, bg = ff.aqua },
-    b = { fg = ff.grey2, bg = ff.bg2 },
-    c = { fg = ff.bg0, bg = ff.bg0 },
+    a = { fg = ff.bg0, bg = ff.green },
+    b = { fg = ff.green, bg = ff.bg2 },
+    c = { fg = ff.green, bg = ff.bg_green },
   },
 
-  insert = { a = { fg = ff.bg0, bg = ff.yellow } },
-  visual = { a = { fg = ff.grey2, bg = ff.bg_green } },
+  insert = {
+    a = { fg = ff.bg0, bg = ff.yellow },
+    b = { fg = ff.yellow, bg = ff.bg2 },
+    c = { fg = ff.yellow, bg = ff.bg_yellow },
+  },
+  visual = {
+    a = { fg = ff.bg0, bg = ff.blue },
+    b = { fg = ff.blue, bg = ff.bg2 },
+    c = { fg = ff.blue, bg = ff.bg_blue },
+  },
   replace = { a = { fg = ff.bg0, bg = ff.bg_red } },
 
   inactive = {
