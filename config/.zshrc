@@ -76,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
-
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
