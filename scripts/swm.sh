@@ -98,17 +98,22 @@ if [[ -z $session_exists ]]; then
   tmux send-keys -t $api "cd ${project_dir}/API" Enter "dotnet run" Enter
   tmux send-keys -t $ngrok 'ngrok http https://localhost:5003 --response-header-add "Access-Control-Allow-Origin: *" --response-header-add "Access-Control-Allow-Headers: *"' Enter
   tmux send-keys -t $vue "cd ${project_dir}/shiprec" Enter "pnpm run dev" Enter
+  tmux send-keys -t "nvim" "nvim ." Enter
 fi
 
-sleep 1
-$local_url=$(curl http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url')
-sleep 1
+# wait for ngrok to start
+sleep 0.5 
+local_url=$(curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url')
+
+# wait for curl to finish
+sleep 0.5
+local_url=$(echo $local_url | sed 's/"//g')
+
 sed -i '' "s|VITE_API_ROOT=.*|VITE_API_ROOT=${local_url}|" ${project_dir}/shiprec/.env
 
-tmux send-keys -t "nvim" "nvim ." Enter
 
 if [[ $with_editor == true ]]; then
-  tmux attach-session -t $session:1
+ tmux attach-session -t $session:1
 else
-  tmux attach-session -t $session
+ tmux attach-session -t $session
 fi
