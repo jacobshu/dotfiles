@@ -21,6 +21,14 @@ then
   exit
 fi
 
+if ! command -v jq &> /dev/null
+then
+  echo "jq could not be found"
+  echo "download and install jq with brew install jq"
+  exit
+fi
+
+
 usage() {
   echo "usage: swm.sh [-e] path_to_bn-modern"
   echo "   -e  open shiprec directory with nvim"
@@ -84,7 +92,7 @@ if [[ -z $session_exists ]]; then
   if [[ $with_editor == true ]]; then 
     echo "opening nvim"
     tmux new-window -t $session:1 -n "nvim"
-    tmux send-keys -t "nvim" "cd ${project_dir}/shiprec && nvim ." Enter
+    tmux send-keys -t "nvim" "cd ${project_dir}/shiprec" Enter
   fi
 
   tmux send-keys -t $docker "docker start --attach swm" Enter
@@ -92,6 +100,13 @@ if [[ -z $session_exists ]]; then
   tmux send-keys -t $ngrok 'ngrok http https://localhost:5003 --response-header-add "Access-Control-Allow-Origin: *" --response-header-add "Access-Control-Allow-Headers: *"' Enter
   tmux send-keys -t $vue "cd ${project_dir}/shiprec" Enter "pnpm run dev" Enter
 fi
+
+sleep 1
+$local_url=$(curl http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url')
+sleep 1
+sed -i '' "s|VITE_API_ROOT=.*|VITE_API_ROOT=${local_url}|" ${project_dir}/shiprec/.env
+
+tmux send-keys -t "nvim" "nvim ." Enter
 
 if [[ $with_editor == true ]]; then
   tmux attach-session -t $session:1
