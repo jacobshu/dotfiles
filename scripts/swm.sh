@@ -24,10 +24,9 @@ fi
 if ! command -v jq &> /dev/null
 then
   echo "jq could not be found"
-  echo "download and install jq with brew install jq"
+  echo "install jq with brew install jq"
   exit
 fi
-
 
 usage() {
   echo "usage: swm.sh [-e] path_to_bn-modern"
@@ -35,7 +34,7 @@ usage() {
 }
 
 is_dir() {
-  if [[ -d $1 ]]; then
+  if [[ -d "$1" ]]; then
     return 0
   else
     return 1
@@ -49,20 +48,20 @@ if [[ $# -eq 0 || $# -gt 2 ]]; then
   usage
   exit
 elif [[ $# -eq 1 ]]; then
-  if ! is_dir $1; then
+  if ! is_dir "$1"; then
     usage
     exit
   fi
-  project_dir=$1
+  project_dir="$1"
 elif [[ $# -eq 2 ]]; then
-  if [[ $1 != "-e" ]]; then
+  if [[ "$1" != "-e" ]]; then
     usage
     exit
-  elif ! is_dir $2; then
+  elif ! is_dir "$2"; then
     usage
     exit
   fi
-  project_dir=$2
+  project_dir="$2"
   with_editor=true
 fi
 
