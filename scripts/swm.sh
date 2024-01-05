@@ -30,7 +30,7 @@ fi
 
 usage() {
   echo "usage: swm.sh [-e] path_to_bn-modern"
-  echo "   -e  open shiprec directory with nvim"
+  echo "   -e  open srapp directory with nvim"
 }
 
 is_dir() {
@@ -91,13 +91,13 @@ if [[ -z $session_exists ]]; then
   if [[ $with_editor == true ]]; then 
     echo "opening nvim"
     tmux new-window -t $session:1 -n "nvim"
-    tmux send-keys -t "nvim" "cd ${project_dir}/shiprec" Enter
+    tmux send-keys -t "nvim" "cd ${project_dir}/srapp" Enter
   fi
 
   tmux send-keys -t $docker "docker start --attach swm" Enter
   tmux send-keys -t $api "cd ${project_dir}/API" Enter "dotnet run" Enter
   tmux send-keys -t $ngrok 'ngrok http https://localhost:5003 --response-header-add "Access-Control-Allow-Origin: *" --response-header-add "Access-Control-Allow-Headers: *"' Enter
-  tmux send-keys -t $vue "cd ${project_dir}/shiprec" Enter "pnpm run dev" Enter
+  tmux send-keys -t $vue "cd ${project_dir}/srapp" Enter "pnpm run dev" Enter
   tmux send-keys -t "nvim" "nvim ." Enter
 fi
 
@@ -109,7 +109,7 @@ local_url=$(curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_u
 sleep 0.5
 local_url=$(echo $local_url | sed 's/"//g')
 
-sed -i '' "s|VITE_API_ROOT=.*|VITE_API_ROOT=${local_url}|" ${project_dir}/shiprec/.env
+sed -i '' "s|VITE_API_ROOT=.*|VITE_API_ROOT=${local_url}|" ${project_dir}/srapp/.env
 
 
 if [[ $with_editor == true ]]; then
