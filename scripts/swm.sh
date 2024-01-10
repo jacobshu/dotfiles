@@ -102,11 +102,11 @@ if [[ -z $session_exists ]]; then
 fi
 
 # wait for ngrok to start
-sleep 0.5 
+sleep 1.0 
 local_url=$(curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url')
 
 # wait for curl to finish
-sleep 0.5
+sleep 1.0
 local_url=$(echo $local_url | sed 's/"//g')
 
 sed -i '' "s|VITE_API_ROOT=.*|VITE_API_ROOT=${local_url}|" ${project_dir}/srapp/.env
