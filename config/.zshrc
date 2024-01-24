@@ -105,7 +105,7 @@ alias mongod-status='brew services list'
 alias mongod-stop='brew services stop mongodb-community'
 alias simulator='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
 alias dontbestupid='open -n /Applications/Visual\ Studio.app/Contents/MacOS/VisualStudio'
-alias dot='cd ~/dotfiles'
+alias dot='cd ~/dev/dotfiles'
 alias dev='cd ~/dev'
 
 woffer () {
