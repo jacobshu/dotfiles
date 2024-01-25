@@ -107,6 +107,7 @@ alias simulator='open /Applications/Xcode.app/Contents/Developer/Applications/Si
 alias dontbestupid='open -n /Applications/Visual\ Studio.app/Contents/MacOS/VisualStudio'
 alias dot='cd ~/dev/dotfiles'
 alias dev='cd ~/dev'
+alias up='brew upgrade'
 
 woffer () {
   for file in $2/*.$1; do 
