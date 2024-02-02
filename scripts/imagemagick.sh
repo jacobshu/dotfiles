@@ -69,11 +69,11 @@ optimize_to_webp() {
   #$input_dir=$1
   #$output_dir=$1
   resize_percent=$1 
-  cd "/Users/jacobshu/Desktop/sb/team-square" #$input_dir
+  cd "/Users/jacobshu/Desktop/sb/burson/team" #$input_dir
   for file in *; do
     mogrify \
       -resize "${resize_percent}%" \
-      -path "/Users/jacobshu/Desktop/sb/team-hyper" \
+      -path "/Users/jacobshu/Desktop/sb/burson/team-optimized" \
       -filter Triangle \
       -define filter:support=2 \
       -unsharp 0.25x0.08+8.3+0.045 \
@@ -96,11 +96,11 @@ optimize_to_webp() {
 
 
 resize() {
-  cd "/Users/jacobshu/Desktop/sb/team-optimized"
+  cd "/Users/jacobshu/Desktop/sb/burson/team-optimized"
   for file in *; do
     mogrify \
-      -crop "x2498" \
-      -path "/Users/jacobshu/Desktop/sb/team-square" \
+      -crop "x1080" \
+      -path "/Users/jacobshu/Desktop/sb/burson/team-square" \
       -verbose \
       ${file}
   done

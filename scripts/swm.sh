@@ -1,36 +1,48 @@
 #!/usr/bin/env zsh
 
-if ! command -v docker &> /dev/null
-then
-  echo "docker could not be found"
-  echo "download and install docker from https://docs.docker.com/engine/install/"
-  exit
-fi
+are_deps_installed() {
+  local deps=("nvim" "tmux")
+  case $1 in
+  "swm")
+    deps+=("docker" "ngrok" "dotnet" "jq" "pnpm")
+    ;;
+  "asn")
+    deps+=("pnpm")
+    ;;
+  "telemetry")
+    deps+=("pnpm")
+    ;;
+  esac
 
-if ! command -v ngrok &> /dev/null
-then
-  echo "ngrok could not be found"
-  echo "download and install ngrok from https://ngrok.com/download"
-  exit
-fi
+  for dep in $swm_deps; do
+    if ! command -v $dep &>/dev/null; then
+      echo "$dep could not be found"
+      echo "install $dep and try again"
+      exit 1
+    fi
+  done
+}
 
-if ! command -v dotnet &> /dev/null
-then
-  echo "dotnet could not be found"
-  echo "download and install dotnet from https://dotnet.microsoft.com/download"
-  exit
-fi
-
-if ! command -v jq &> /dev/null
-then
-  echo "jq could not be found"
-  echo "install jq with brew install jq"
-  exit
-fi
+get_project_dir() {
+  local project_name=$1
+  local project_dir=""
+  case $project_name in
+  "swm")
+    project_dir="$HOME/dev/bn-modern"
+    ;;
+  "asn")
+    project_dir="$HOME/dev/asn/client"
+    ;;
+  "telemetry")
+    project_dir="$HOME/dev/telemetry"
+    ;;
+  esac
+  echo $project_dir
+}
 
 usage() {
-  echo "usage: swm.sh [-e] path_to_bn-modern"
-  echo "   -e  open srapp directory with nvim"
+  echo "usage: run.sh [-e] project_name"
+  echo "   -e  open project directory with nvim"
 }
 
 is_dir() {
@@ -41,6 +53,7 @@ is_dir() {
   fi
 }
 
+project_name=""
 project_dir=""
 with_editor=false
 
@@ -52,7 +65,7 @@ elif [[ $# -eq 1 ]]; then
     usage
     exit
   fi
-  project_dir="$1"
+  project_name="$1"
 elif [[ $# -eq 2 ]]; then
   if [[ "$1" != "-e" ]]; then
     usage
@@ -61,7 +74,7 @@ elif [[ $# -eq 2 ]]; then
     usage
     exit
   fi
-  project_dir="$2"
+  project_name="$2"
   with_editor=true
 fi
 
@@ -69,7 +82,7 @@ if [[ ${project_dir: -1} == "/" ]]; then
   project_dir=${project_dir%?}
 fi
 
-session="swm"
+session=$project_name
 session_exists=$(tmux list-sessions | grep $session)
 window=${session}:"dev-procs"
 docker=${window}.0
