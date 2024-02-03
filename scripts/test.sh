@@ -34,5 +34,9 @@ for (( i=0; i<length; i++)); do
     rows+=($str)
 done
 
-csv=$(printf "%s" "${rows[@]}")
-echo $csv | cut -d ',' -f 1
+csv=$(printf "%s\\\\n" "${rows[@]}")
+
+echo $csv > /Users/jacobshu/dev/asn/client/pnpm.csv
+typeofvar csv
+cut -d, -f1,2,3,4 <<< $csv
+
