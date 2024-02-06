@@ -1,0 +1,10 @@
+name: asn
+root: ~/dev/asn/client
+on_project_start: run node-launch.sh
+windows:
+  - editor:
+    - nvim .
+  - server:
+    - pnpm run dev
+  - test:
+    - pnpm run test

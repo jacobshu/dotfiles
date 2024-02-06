@@ -126,6 +126,10 @@ onPort () {
   lsof -nP -iTCP -sTCP:LISTEN | grep $1
 }
 
+run () {
+  sh ~/dev/dotfiles/scripts/$1 $2
+}
+
 x () {
   exa --long --all --no-permissions --no-user --icons $1
 }
