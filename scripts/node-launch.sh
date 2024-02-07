@@ -23,10 +23,10 @@ else
       --prompt.foreground 11 --prompt.bold --prompt.align 'left' \
       --selected.background 2 --selected.foreground 232 --selected.bold \
       --unselected.background 0 --unselected.foreground 243)
-          echo "\n"
-          pnpm up "$to_update"
-          git add package.json pnpm-lock.yaml && git commit -m "chore: update packages"
-        else
-          gum style --foreground 9 --bold "No updates applied"
+    echo "\n"
+    pnpm up "$to_update"
+    git add package.json pnpm-lock.yaml && git commit -m "chore: update packages"
+  else
+    gum style --foreground 9 --bold "No updates applied"
   fi
 fi
