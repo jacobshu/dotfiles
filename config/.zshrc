@@ -127,7 +127,9 @@ onPort () {
 }
 
 run () {
-  sh ~/dev/dotfiles/scripts/$1 $2
+  project=~/dev/dotfiles/scripts/$1.sh
+  echo "Running $project"
+  sh $project
 }
 
 x () {
