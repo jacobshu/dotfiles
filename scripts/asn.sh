@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source $(dirname "$0")/node-launch.sh
+
 project_name="asn"
 project_dir=$HOME/dev/asn/client
 
