@@ -3,8 +3,9 @@
 pnpm=$(pnpm outdated --json)
 n=$(echo $pnpm | jq -r 'keys[]')
 names=($n)
+length=${#names[@]}
 
-if [[ $pnpm == "{}" ]]; then
+if [[ $length == 0 ]]; then
   gum style --foreground 9 --bold "No updates available"
 else 
   pnpm outdated

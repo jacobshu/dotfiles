@@ -3,7 +3,7 @@
 source $(dirname "$0")/node-launch.sh
 
 project_name="jacobshu"
-project_dir=$HOME/dev/jacobshudev"
+project_dir=$HOME/dev/jacobshudev
 
 # tmux format is session:window.pane
 session=$project_name
