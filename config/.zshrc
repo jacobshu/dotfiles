@@ -129,7 +129,7 @@ onPort () {
 run () {
   project=~/dev/dotfiles/scripts/$1.sh
   echo "Running $project"
-  sh $project
+  sh $project "${@:2}"
 }
 
 x () {
@@ -141,3 +141,11 @@ xt () {
 }
 
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/jacobshu/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
