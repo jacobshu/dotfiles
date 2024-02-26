@@ -68,6 +68,23 @@ Forestfox is a variation of the medium-dark palette of the [Everforest theme](ht
 [374b5f]: https://fakeimg.pl/96/374b5f/d0c9a1/?text=%23374b5f&font=noto&font_size=12 "bg_blue - #374b5f"
 [4f4f41]: https://fakeimg.pl/96/4f4f41/d0c9a1/?text=%234f4f41&font=noto&font_size=12 "bg_yellow - #4f4f41"
 
+<!-- foreground colors -->
+[d0c9a1]: https://fakeimg.pl/96/d0c9a1/283038/?text=%23232A2E&font=noto&font_size=12 "fg - #d0c9a1"  
+[da7280]: https://fakeimg.pl/96/da7280/283038/?text=%23232A2E&font=noto&font_size=12 "red - #da7280"
+[eda173]: https://fakeimg.pl/96/eda173/283038/?text=%23232A2E&font=noto&font_size=12 "orange - #eda173"
+[dbba79]: https://fakeimg.pl/96/dbba79/283038/?text=%23232A2E&font=noto&font_size=12 "yellow - #dbba79"
+[a8c180]: https://fakeimg.pl/96/a8c180/283038/?text=%23232A2E&font=noto&font_size=12 "green - #a8c180"
+[7bc29a]: https://fakeimg.pl/96/7bc29a/283038/?text=%23232A2E&font=noto&font_size=12 "aqua - #7bc29a"
+[78b1bd]: https://fakeimg.pl/96/78b1bd/283038/?text=%23232A2E&font=noto&font_size=12 "blue - #78b1bd"
+[d491b5]: https://fakeimg.pl/96/d491b5/283038/?text=%23232A2E&font=noto&font_size=12 "purple - #d491b5"  
+[738478]: https://fakeimg.pl/96/738478/283038/?text=%23232A2E&font=noto&font_size=12 "grey0 - #738478"
+[7f928d]: https://fakeimg.pl/96/7f928d/283038/?text=%23232A2E&font=noto&font_size=12 "grey1 - #7f928d"
+[95a8a2]: https://fakeimg.pl/96/95a8a2/283038/?text=%23232A2E&font=noto&font_size=12 "grey2 - #95a8a2"  
+[a8c180]: https://fakeimg.pl/96/a8c180/283038/?text=%23232A2E&font=noto&font_size=12 "statusline0 - #a8c180"
+[d0c9a1]: https://fakeimg.pl/96/d0c9a1/283038/?text=%23232A2E&font=noto&font_size=12 "statusline1 - #d0c9a1"
+[da7280]: https://fakeimg.pl/96/da7280/283038/?text=%23232A2E&font=noto&font_size=12 "statusline2 - #da7280"
+
+
 <!-- highlights descriptions (dark medium values) -->
 [hl_bgd]: https://fakeimg.pl/48/232A2E/232A2E/ "bg_dim - #232A2E"
 [hl_bg0]: https://fakeimg.pl/48/283038/283038/ "bg0 - #283038"
