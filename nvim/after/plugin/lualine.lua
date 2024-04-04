@@ -1,6 +1,14 @@
 -- Forestfox config for lualine
 local ff = require('jacobshu/forestfox')
 
+local function wordcount()
+    return tostring(vim.fn.wordcount().words) .. ' words'
+end
+
+local function is_markdown()
+    return vim.bo.filetype == "markdown" or vim.bo.filetype == "asciidoc"
+end
+
 local ff_theme = {
   normal = {
     a = { fg = ff.bg0, bg = ff.green },
@@ -39,7 +47,9 @@ require('lualine').setup {
     },
     lualine_b = { 'filename', 'branch' },
     lualine_c = { 'fileformat' },
-    lualine_x = {},
+    lualine_x = {
+      { wordcount, cond = is_markdown },
+    },
     lualine_y = { 'filetype', 'progress' },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
