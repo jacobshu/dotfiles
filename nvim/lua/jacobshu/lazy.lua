@@ -58,25 +58,25 @@ require("lazy").setup(
     },
 
     -- copilot & lsp
-    {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-      opts = {
-        panel = {
-          auto_refresh = true,
-        },
-        suggestion = {
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-l>",
-            next = "<C-j>",
-            prev = "<C-k>",
-            dismiss = "C-[",
-          },
-        },
-      },
-    },
+    -- {
+    --   "zbirenbaum/copilot.lua",
+    --   cmd = "Copilot",
+    --   event = "InsertEnter",
+    --   opts = {
+    --     panel = {
+    --       auto_refresh = true,
+    --     },
+    --     suggestion = {
+    --       auto_trigger = true,
+    --       keymap = {
+    --         accept = "<C-l>",
+    --         next = "<C-j>",
+    --         prev = "<C-k>",
+    --         dismiss = "C-[",
+    --       },
+    --     },
+    --   },
+    -- },
     {
       "VonHeikemen/lsp-zero.nvim",
       branch = "v3.x",
