@@ -53,7 +53,7 @@ require("mason-lspconfig").setup({
     "rust_analyzer",
     "svelte",
     -- "tsserver",
-    "volar",
+    -- "volar",
     --"gofumpt",
     --"prettier",
     --"stylua",
