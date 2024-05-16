@@ -51,7 +51,7 @@ require("mason-lspconfig").setup({
     "mdx_analyzer",
     "omnisharp",
     "rust_analyzer",
-    "svelte",
+    -- "svelte",
     -- "tsserver",
     -- "volar",
     --"gofumpt",
