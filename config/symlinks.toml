@@ -2,18 +2,8 @@
 version = "1.1"
 
 [[dotfiles]]
-source = "dev/dotfiles/config/nightfox.yaml"
-target = ".warp/themes/nightfox.yaml"
-isFile = true
-
-[[dotfiles]]
 source = "dev/dotfiles/config/forestfox.yaml"
 target = ".warp/themes/forestfox.yaml"
-isFile = true
-
-[[dotfiles]]
-source = "dev/dotfiles/config/nord.yaml"
-target = ".warp/themes/nord.yaml"
 isFile = true
 
 [[dotfiles]]
@@ -40,16 +30,6 @@ isFile = true
 source = "dev/dotfiles/nvim"
 target = ".config/nvim"
 isFile = false
-
-[[dotfiles]]
-source = "dev/dotfiles/config/typioca.conf"
-target = "./Library/Application Support/typioca/typioca.conf"
-isFile = true
-
-[[dotfiles]]
-source = "dev/dotfiles/config/ngrok.yml"
-target = "./Library/Application Support/ngrok/ngrok.yml"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/bin/netcoredbg"

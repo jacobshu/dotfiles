@@ -16,14 +16,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
   {
     -- themes and styling
-    "EdenEast/nightfox.nvim",
     {
       "neanias/everforest-nvim",
       version = false,
       lazy = false,
-      priority = 1000 -- make sure to load this before all the other start plugins
+      priority = 1000
     },
-    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+    {
+      "nvim-lualine/lualine.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
 
     -- tools for moving around
     {
@@ -32,9 +34,16 @@ require("lazy").setup(
     },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons"
+      }
     },
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate"
+    },
     "nvim-treesitter/playground",
     "theprimeagen/harpoon",
 
@@ -43,7 +52,7 @@ require("lazy").setup(
     "tpope/vim-fugitive",
     {
       "kylechui/nvim-surround",
-      version = "*", -- Use for stability; omit to use `main` branch for the latest features
+      version = "*",
       event = "VeryLazy",
       config = function()
         require("nvim-surround").setup({})
@@ -51,32 +60,10 @@ require("lazy").setup(
     },
     {
       'numToStr/Comment.nvim',
-      opts = {
-        -- add any options here
-      },
       lazy = false,
     },
 
-    -- copilot & lsp
-    -- {
-    --   "zbirenbaum/copilot.lua",
-    --   cmd = "Copilot",
-    --   event = "InsertEnter",
-    --   opts = {
-    --     panel = {
-    --       auto_refresh = true,
-    --     },
-    --     suggestion = {
-    --       auto_trigger = true,
-    --       keymap = {
-    --         accept = "<C-l>",
-    --         next = "<C-j>",
-    --         prev = "<C-k>",
-    --         dismiss = "C-[",
-    --       },
-    --     },
-    --   },
-    -- },
+    -- LSPs
     {
       "VonHeikemen/lsp-zero.nvim",
       branch = "v3.x",
@@ -97,6 +84,8 @@ require("lazy").setup(
         { "L3MON4D3/LuaSnip" }                   -- Required
       }
     },
+
+    -- Specific framework support
     {
       'akinsho/flutter-tools.nvim',
       lazy = false,
@@ -107,6 +96,9 @@ require("lazy").setup(
       config = true,
     },
     { 'mfussenegger/nvim-dap' },
-    { "rcarriga/nvim-dap-ui",            requires = { "mfussenegger/nvim-dap" } }
+    {
+      "rcarriga/nvim-dap-ui",
+      requires = { "mfussenegger/nvim-dap" }
+    }
   }
 )

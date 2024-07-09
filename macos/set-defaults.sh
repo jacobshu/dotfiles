@@ -1,6 +1,6 @@
 # Sets reasonable macOS defaults.
 #
-# The original idea (and a couple settings) were grabbed from:
+# The original idea (and some of the settings) were grabbed from:
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 #
 # Run ./set-defaults.sh and you'll be good to go.
@@ -68,7 +68,6 @@ defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true"
 
 # Finder: disable warning for file extension changes
 defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
-
 
 
 killall Finder

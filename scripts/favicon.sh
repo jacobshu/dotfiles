@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # This script is used to generate favicon files
+# https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
 
 # Usage: favicon.sh <svg file>
 # Example: favicon.sh ./favicon.svg

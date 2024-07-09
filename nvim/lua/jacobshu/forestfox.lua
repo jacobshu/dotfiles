@@ -1,7 +1,7 @@
 M             = {}
 
 -- background neutrals
-M.bg_dim      = "#232b31"
+M.bg_dim      = "#232a2e"
 M.bg0         = "#283038"
 M.bg1         = "#2e373f"
 M.bg2         = "#374149"
