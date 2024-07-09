@@ -33,9 +33,9 @@ Full config for neovim, including:
 ### `scripts`
 
 Scripts for easier development
-`asn.sh`: the better half
-`favicon.sh`: generate favicon files and HTML 
-`imagemagick.sh`: useful image manipulation scripts
-`jacobshu.sh`: personal site
-`node-launch.sh`: launch a JS project with optional update
-`swm.sh`: swm server, database, proxy, and Vue launch
+- `asn.sh`: the better half
+- `favicon.sh`: generate favicon files and HTML 
+- `imagemagick.sh`: useful image manipulation scripts
+- `jacobshu.sh`: personal site
+- `node-launch.sh`: launch a JS project with optional update
+- `swm.sh`: swm server, database, proxy, and Vue launch
