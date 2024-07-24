@@ -84,6 +84,18 @@ require("lazy").setup(
         { "L3MON4D3/LuaSnip" }                   -- Required
       }
     },
+    {
+      "seblj/roslyn.nvim",
+      config = function()
+        require("roslyn").setup({
+          exe = vim.fs.joinpath(
+            vim.fn.stdpath("data") --[[@as string]],
+            "roslyn",
+            "Microsoft.CodeAnalysis.LanguageServer.dll"
+          ),
+        })
+      end
+    },
 
     -- Specific framework support
     {
