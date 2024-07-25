@@ -13,7 +13,7 @@ require("everforest").setup({
     palette.bg5         = ff.bg5
     -- bg colors
     palette.bg_red      = ff.bg_red
-    palette.bg_visual   = ff.bg_visual
+    palette.bg_visual   = ff.bg_magenta
     palette.bg_blue     = ff.bg_blue
     palette.bg_green    = ff.bg_green
     palette.bg_yellow   = ff.bg_yellow
@@ -31,8 +31,8 @@ require("everforest").setup({
     palette.grey1       = ff.grey1
     palette.grey2       = ff.grey2
     -- accents
-    palette.statusline1 = ff.statusline1
-    palette.statusline2 = ff.statusline2
-    palette.statusline3 = ff.statusline3
+    palette.statusline1 = ff.green
+    palette.statusline2 = ff.fg
+    palette.statusline3 = ff.red
   end
 })

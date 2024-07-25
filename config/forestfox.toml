@@ -1,0 +1,52 @@
+[forestfox]
+bg_dim         = "#282b2e"
+bg0            = "#283038"
+bg1            = "#2e373f"
+bg2            = "#374149"
+bg3            = "#404b54"
+bg4            = "#48565c"
+bg5            = "#526465"
+
+grey0          = "#778378"
+grey1          = "#869388"
+grey2          = "#9da99e"
+grey3          = "#b2b6a7"
+fg0            = "#c3bda3"
+fg1            = "#cfc2a4"
+fg2            = "#e5d9bc"
+
+bg_red         = "#513c40"
+dim_red        = "#965e67"
+red            = "#da7280"
+bright_red     = "#f1949c"
+
+bg_magenta     = "#563954"
+dim_magenta    = "#96668c"
+magenta        = "#d694be"
+bright_magenta = "#fdade4"
+
+bg_blue        = "#374b5f"
+dim_blue       = "#5c7d8e"
+blue           = "#78b1bd"
+bright_blue    = "#95dae8"
+
+bg_aqua        = "#375153"
+dim_aqua       = "#5a8b7f"
+aqua           = "#7bc29a"
+bright_aqua    = "#89e5be"
+
+bg_green       = "#3c4c44"
+dim_green      = "#678b65"
+green          = "#a3c180"
+bright_green   = "#bbe693"
+
+bg_yellow      = "#4f4f41"
+dim_yellow     = "#857d57"
+yellow         = "#dbba79"
+bright_yellow  = "#f0dd9d"
+
+bg_orange      = "#785335"
+dim_orange     = "#af7852"
+orange         = "#eda173"
+bright_orange  = "#ffa06a"
+
