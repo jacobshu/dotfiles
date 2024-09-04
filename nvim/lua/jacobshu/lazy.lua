@@ -15,6 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
+    --local
+    {
+      dir = "~/dev/ai.nvim",
+      name = "¯\\_(ツ)_/¯"
+    },
     -- themes and styling
     {
       "neanias/everforest-nvim",
