@@ -18,8 +18,19 @@ require("lazy").setup(
     --local
     {
       dir = "~/dev/ai.nvim",
-      name = "¯\\_(ツ)_/¯"
+      name = "¯\\_(ツ)_/¯",
+      enabled = function()
+        local ok, err, code = os.rename("~/dev/ai.nvim", "~/dev/ai.nvim")
+        if not ok then
+          if code == 13 then
+            -- Permission denied, but it exists
+            return true
+          end
+        end
+        return ok, err
+      end
     },
+
     -- themes and styling
     {
       "neanias/everforest-nvim",
