@@ -1,27 +1,36 @@
 local set = vim.keymap.set
 
--- Set leader key
-vim.g.mapleader = " "
-
--- Shortcut for opening netrw explore 
+-- Shortcut for opening netrw explore
 set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Move visually selected blocks vertically
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- splits navigation: tjdevries
+set("n", "<c-j>", "<c-w><c-j>")
+set("n", "<c-k>", "<c-w><c-k>")
+set("n", "<c-l>", "<c-w><c-l>")
+set("n", "<c-h>", "<c-w><c-h>")
 
-set("n", "J", "mzJ`z")
-set("n", "<C-d>", "<C-d>zz")
-set("n", "<C-u>", "<C-u>zz")
-set("n", "n", "nzzzv")
-set("n", "N", "Nzzzv")
+-- split sizing (height/width)
+set("n", "<M-,>", "<c-w>5<")
+set("n", "<M-.>", "<c-w>5>")
+set("n", "<M-t>", "<C-W>+")
+set("n", "<M-s>", "<C-W>-")
+
+-- set("n", "J", "mzJ`z")
+-- set("n", "<C-d>", "<C-d>zz")
+-- set("n", "<C-u>", "<C-u>zz")
+-- set("n", "n", "nzzzv")
+-- set("n", "N", "Nzzzv")
 
 -- Allow pasting yanked text without yanking the replaced text
 set("x", "<leader>p", [["_dP]])
 
--- Yank to system clipboard : asbjornHaland
+-- Yank selection to system clipboard : asbjornHaland
 set({ "n", "v" }, "<leader>y", [["+y]])
+-- Yank line to system clipboard : asbjornHaland
 set("n", "<leader>Y", [["+Y]])
 
 -- Delete into the blackhole register
@@ -37,14 +46,14 @@ set("n", "<leader>f", vim.lsp.buf.format)
 set("n", "<C-k>", "<cmd>cnext<CR>zz")
 set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
--- Easier location list navigation 
+-- Easier location list navigation
 set("n", "<leader>k", "<cmd>lnext<CR>zz")
 set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- search/replace for word under cursor
 set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- make file executable
+-- execute file
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
 set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
