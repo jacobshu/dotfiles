@@ -88,8 +88,6 @@ return {
 					},
 				},
 
-				ols = {},
-
 				tailwindcss = {
 					settings = {
 						tailwindCSS = {
@@ -118,6 +116,21 @@ return {
 				"lua_ls",
 				"delve",
 				-- "tailwind-language-server",
+				-- "astro",
+				"bashls",
+				"csharp_ls",
+				"cssls",
+				"gopls",
+				"html",
+				"intelephense",
+				"lua_ls",
+				"mdx_analyzer",
+				-- "omnisharp",
+				-- "rust_analyzer",
+				"svelte",
+				"volar",
+				--"gofumpt",
+				"prettier",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)

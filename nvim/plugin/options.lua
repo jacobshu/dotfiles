@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.guicursor = "" --"n-v-i::ver30-blinkwait300-blinkon200-blinkoff150"
+opt.guicursor = "a:block,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- You have to turn this one on :)
 opt.inccommand = "split"
