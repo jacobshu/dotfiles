@@ -116,7 +116,7 @@ return {
 				"lua_ls",
 				"delve",
 				-- "tailwind-language-server",
-				-- "astro",
+				"astro",
 				"bashls",
 				"csharp_ls",
 				"cssls",
@@ -169,10 +169,16 @@ return {
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 					vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+					vim.keymap.set("n", "gs", vim.lsp.buf.workspace_symbol, { buffer = 0 })
+					vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, { buffer = 0 })
 
-					vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
-					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
-					vim.keymap.set("n", "<space>wd", builtin.lsp_document_symbols, { buffer = 0 })
+					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = 0 })
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
+					vim.keymap.set("n", "<leader>wd", builtin.lsp_document_symbols, { buffer = 0 })
+					vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = 0 })
+					vim.keymap.set("n", "<leader>vs", vim.lsp.buf.signature_help, { buffer = 0 })
+					vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = 0 })
+					vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = 0 })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
@@ -224,14 +230,14 @@ return {
 			-- require("lsp_lines").setup()
 			vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
-			-- vim.keymap.set("", "<leader>l", function()
-			--   local config = vim.diagnostic.config() or {}
-			--   if config.virtual_text then
-			--     vim.diagnostic.config { virtual_text = false, virtual_lines = true }
-			--   else
-			--     vim.diagnostic.config { virtual_text = true, virtual_lines = false }
-			--   end
-			-- end, { desc = "Toggle lsp_lines" })
+			vim.keymap.set("", "<leader>l", function()
+				local config = vim.diagnostic.config() or {}
+				if config.virtual_text then
+					vim.diagnostic.config({ virtual_text = false, virtual_lines = true })
+				else
+					vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
+				end
+			end, { desc = "Toggle lsp_lines" })
 		end,
 	},
 }
