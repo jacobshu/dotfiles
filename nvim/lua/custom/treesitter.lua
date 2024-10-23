@@ -9,6 +9,7 @@ M.setup = function()
 			"css",
 			"csv",
 			"dart",
+			"dockerfile",
 			"go",
 			"html",
 			"javascript",
