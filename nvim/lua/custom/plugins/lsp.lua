@@ -36,6 +36,7 @@ return {
 				bashls = true,
 				csharp_ls = true,
 				cssls = true,
+				dockerls = true,
 				gopls = {
 					settings = {
 						gopls = {
