@@ -132,12 +132,46 @@ run () {
   sh $project "${@:2}"
 }
 
-x () {
-  exa --long --all --no-permissions --no-user --icons $1
+rzync() {
+    # Check if minimum required arguments are provided
+    if [[ $# -lt 4 ]]; then
+        echo "Usage: rzync [port] [local_path] [remote_user@server] [remote_path]"
+        echo "Example: rzync 55480 ~/dev/project install_name@11.111.111.111:/remote/path"
+        return 1
+    fi
+
+    port=$1
+    local_path=$2
+    remote_target=$3
+    remote_path=$4
+
+    # Perform rsync with specified parameters
+    # Options explained:
+    # -r: recursive
+    # -v: verbose
+    # -z: compress during transfer
+    # -h: human-readable file sizes
+    # --exclude: ignore specific files/directories
+    # --progress: show progress during transfer
+    # -e: specify ssh command with port
+    rsync -rvzh \
+        --exclude .git/ \
+        --exclude .gitignore \
+        --exclude node_modules/ \
+        --exclude .DS_Store \
+        -e "ssh -p $port" \
+        --progress \
+        "$local_path" \
+        "$remote_target:$remote_path"
 }
 
-xt () {
-  exa --long --all --no-permissions --no-user --icons --tree $1
+# Optional: Add completion for rzync
+_rzync_completion() {
+    _arguments \
+        '1:port number:' \
+        '2:local path:_files -/' \
+        '3:remote user and server:' \
+        '4:remote path:_files -/'
 }
 
 eval "$(starship init zsh)"
