@@ -174,6 +174,8 @@ _rzync_completion() {
         '4:remote path:_files -/'
 }
 
+alias love="/Applications/love.app/Contents/MacOS/love"
+
 eval "$(starship init zsh)"
 
 # pnpm
