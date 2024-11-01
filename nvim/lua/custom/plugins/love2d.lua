@@ -1,7 +1,7 @@
 return {
 	{
 		"S1M0N38/love2d.nvim",
-		cmd = "LoveRun",
+		event = "VeryLazy",
 		opts = {},
 		keys = {
 			{ "<leader>v", desc = "LÖVE" },
