@@ -153,6 +153,8 @@ vimme() {
 }
 
 alias love="/Applications/love.app/Contents/MacOS/love"
+export PATH=$PATH:/Users/jacobshu/.local/opt/go/bin/go
+export ANTHROPIC_API_KEY=op://Employee/Anthropic/credentials/personal_token
 
 eval "$(starship init zsh)"
 
@@ -163,3 +165,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
