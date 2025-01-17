@@ -4,5 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	config = true,
+	config = function()
+		require("custom.codecompanion")
+	end,
 }
