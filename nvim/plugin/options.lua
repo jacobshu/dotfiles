@@ -9,7 +9,7 @@ opt.inccommand = "split"
 opt.smartcase = true
 opt.ignorecase = true
 
-opt.nu = true
+opt.number = true
 opt.relativenumber = true
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"

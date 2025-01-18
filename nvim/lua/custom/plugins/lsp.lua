@@ -34,7 +34,7 @@ return {
 			local servers = {
 				astro = true,
 				bashls = true,
-				csharp_ls = true,
+				--csharp_ls = true,
 				cssls = true,
 				dockerls = true,
 				gopls = {
@@ -119,7 +119,7 @@ return {
 				-- "tailwind-language-server",
 				"astro",
 				"bashls",
-				"csharp_ls",
+				-- "csharp_ls",
 				"cssls",
 				"gopls",
 				"html",
