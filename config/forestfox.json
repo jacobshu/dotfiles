@@ -1,0 +1,346 @@
+[
+  { "value": "#232b2e",
+    "names": {
+      "nvim": "bg_dim",
+      "ghostty": "bg_dim",
+      "dev": "",
+      "prose": "stygian"
+    }
+  },
+  { "value": "#283038",
+    "names": {
+      "nvim": "bg0",
+      "ghostty": "bg0",
+      "dev": "",
+      "prose": "tenebrous"
+    }
+  },
+  { "value": "#2e373f",
+    "names": {
+      "nvim": "bg1",
+      "ghostty": "bg1",
+      "dev": "",
+      "prose": "darksome"
+    }
+  },
+  { "value": "#374149",
+    "names": {
+      "nvim": "bg2",
+      "ghostty": "bg2",
+      "dev": "",
+      "prose": "gloaming"
+    }
+  },
+  { "value": "#404b54",
+    "names": {
+      "nvim": "bg3",
+      "ghostty": "bg3",
+      "dev": "",
+      "prose": "gloom"
+    }
+  },
+  { "value": "#48565c",
+    "names": {
+      "nvim": "bg4",
+      "ghostty": "bg4",
+      "dev": "",
+      "prose": "dusk"
+    }
+  },
+  { "value": "#526465",
+    "names": {
+      "nvim": "bg5",
+      "ghostty": "bg5",
+      "dev": "",
+      "prose": "twilight"
+    }
+  },
+  
+  { "value": "#778378",
+    "names": {
+      "nvim": "grey0",
+      "ghostty": "grey0",
+      "dev": "",
+      "prose": "shade"
+    }
+  },
+  { "value": "#869388",
+    "names": {
+      "nvim": "grey1",
+      "ghostty": "grey1",
+      "dev": "",
+      "prose": "mist"
+    }
+  },
+  { "value": "#9da99e",
+    "names": {
+      "nvim": "grey2",
+      "ghostty": "grey2",
+      "dev": "",
+      "prose": "fog"
+    }
+  },
+  { "value": "#b2b6a7",
+    "names": {
+      "nvim": "grey3",
+      "ghostty": "grey3",
+      "dev": "",
+      "prose": "haze"
+    }
+  },
+  { "value": "#c3bda3",
+    "names": {
+      "nvim": "fg0",
+      "ghostty": "fg0",
+      "dev": "",
+      "prose": "vapor"
+    }
+  },
+  { "value": "#cfc2a4",
+    "names": {
+      "nvim": "fg1",
+      "ghostty": "fg1",
+      "dev": "",
+      "prose": "cloud"
+    }
+  },
+  { "value": "#e5d9bc",
+    "names": {
+      "nvim": "fg2",
+      "ghostty": "fg2",
+      "dev": "",
+      "prose": "dawn"
+    }
+  },
+
+  { "value": "#513c40",
+    "names": {
+      "nvim": "bg_red",
+      "ghostty": "bg_red",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#965e67",
+    "names": {
+      "nvim": "dim_red",
+      "ghostty": "dim_red",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#da7280",
+    "names": {
+      "nvim": "red",
+      "ghostty": "red",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#f1949c",
+    "names": {
+      "nvim": "bright_red",
+      "ghostty": "bright_red",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#3c4c44",
+    "names": {
+      "nvim": "bg_green",
+      "ghostty": "bg_green",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#678b65",
+    "names": {
+      "nvim": "dim_green",
+      "ghostty": "dim_green",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#a3c180",
+    "names": {
+      "nvim": "green",
+      "ghostty": "green",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#bbe693",
+    "names": {
+      "nvim": "bright_green",
+      "ghostty": "bright_green",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#4f4f41",
+    "names": {
+      "nvim": "bg_yellow",
+      "ghostty": "bg_yellow",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#857d57",
+    "names": {
+      "nvim": "dim_yellow",
+      "ghostty": "dim_yellow",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#dbba79",
+    "names": {
+      "nvim": "yellow",
+      "ghostty": "yellow",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#f0dd9d",
+    "names": {
+      "nvim": "bright_yellow",
+      "ghostty": "bright_yellow",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#374b5f",
+    "names": {
+      "nvim": "bg_blue",
+      "ghostty": "bg_blue",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#5c7d8e",
+    "names": {
+      "nvim": "dim_blue",
+      "ghostty": "dim_blue",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#78b1bd",
+    "names": {
+      "nvim": "blue",
+      "ghostty": "blue",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#95dae8",
+    "names": {
+      "nvim": "bright_blue",
+      "ghostty": "bright_blue",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#563954",
+    "names": {
+      "nvim": "bg_magenta",
+      "ghostty": "bg_magenta",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#96668c",
+    "names": {
+      "nvim": "dim_magenta",
+      "ghostty": "dim_magenta",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#d694be",
+    "names": {
+      "nvim": "magenta",
+      "ghostty": "magenta",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#fdade4",
+    "names": {
+      "nvim": "bright_magenta",
+      "ghostty": "bright_magenta",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#375153",
+    "names": {
+      "nvim": "bg_aqua",
+      "ghostty": "bg_aqua",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#5a8b7f",
+    "names": {
+      "nvim": "dim_aqua",
+      "ghostty": "dim_aqua",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#7bc29a",
+    "names": {
+      "nvim": "aqua",
+      "ghostty": "aqua",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#89e5be",
+    "names": {
+      "nvim": "bright_aqua",
+      "ghostty": "bright_aqua",
+      "dev": "",
+      "prose": ""
+    }
+  },
+
+  { "value": "#785335",
+    "names": {
+      "nvim": "bg_orange",
+      "ghostty": "bg_orange",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#af7852",
+    "names": {
+      "nvim": "dim_orange",
+      "ghostty": "dim_orange",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#eda173",
+    "names": {
+      "nvim": "orange",
+      "ghostty": "orange",
+      "dev": "",
+      "prose": ""
+    }
+  },
+  { "value": "#ffa06a",
+    "names": {
+      "nvim": "bright_orange",
+      "ghostty": "bright_orange",
+      "dev": "",
+      "prose": ""
+    }
+  }
+]
