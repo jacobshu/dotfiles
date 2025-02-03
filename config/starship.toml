@@ -1,19 +1,110 @@
 format = """
-[░▒▓](cyan)\
-[  ](fg:black bg:cyan)\
-[▓▒░](cyan)\
+[](color_os_bg)\
+$os\
+$username\
+[](bg:color_dir_bg fg:color_os_bg)\
 $directory\
+[](fg:color_dir_bg bg:color_git_bg)\
 $git_branch\
 $git_status\
-$nodejs\
+[](fg:color_git_bg bg:color_lang_bg)\
+$c\
 $rust\
 $golang\
+$nodejs\
 $php\
+$java\
+$haskell\
+$python\
+[](fg:color_lang_bg bg:color_context_bg)\
+$docker_context\
+$conda\
+[](fg:color_context_bg bg:color_time_bg)\
 $time\
-\n$character"""
+[ ](fg:color_time_bg)\
+$line_break$character"""
+
+palette = 'forestfox'
+
+# palette
+[palettes.forestfox]
+color_os_bg = '#374149'
+color_os_fg = '#e5d9bc'
+
+color_dir_bg = '#48565c'
+color_dir_fg =  '#e5d9bc'
+
+color_git_bg = '#778378'
+color_git_fg = '#e5d9bc'
+
+color_lang_bg = '#9da99e'
+color_lang_fg = '#526465'
+
+color_context_bg = '#b2b6a7'
+color_context_fg = '#526465'
+
+color_time_bg = '#c3bda3'
+color_time_fg = '#526465'
+
+
+color_bgx = '#232b2e'
+color_bg0 = '#283038'
+color_bg1 = '#2e373f'
+color_bg2 = '#374149'
+color_bg3 = '#404b54'
+color_bg4 = '#48565c'
+color_bg5 = '#526465'
+color_grey0 = '#778378'
+color_grey1 = '#869388'
+color_grey2 = '#9da99e'
+color_grey3 = '#b2b6a7'
+color_fg0 = '#c3bda3'
+color_fg1 = '#cfc2a4'
+color_fg2 = '#e5d9bc'
+color_blue = '#5c7d8e'
+color_aqua = '#5a8b7f'
+color_green = '#678b65'
+color_orange = '#af7852'
+color_magenta = '#96668c'
+color_red = '#965e67'
+color_yellow = '#857d57'
+# end palette 
+
+[os]
+disabled = false
+style = "bg:color_os_bg fg:color_os_fg"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:color_os_bg fg:color_os_fg"
+style_root = "bg:color_os_bg fg:color_os_fg"
+format = '[ $user ]($style)'
 
 [directory]
-style = "fg:yellow"
+style = "fg:color_dir_fg bg:color_dir_bg"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -21,53 +112,87 @@ truncation_symbol = "…/"
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = " "
+"Music" = "󰝚 "
 "Pictures" = " "
+"Developer" = "󰲋 "
 
 [git_branch]
 symbol = ""
-style = "fg:blue"
-format = '[ $symbol $branch ]($style)'
+style = "bg:color_git_bg"
+format = '[[ $symbol $branch ](fg:color_git_fg bg:color_git_bg)]($style)'
 
 [git_status]
-style = ""
-format = '[[($all_status$ahead_behind )](fg:blue)]($style)'
+style = "bg:color_git_bg"
+format = '[[($all_status$ahead_behind )](fg:color_git_fg bg:color_git_bg)]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:green"
-format = '[ [$symbol ($version) ](fg:green)]($style)'
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
 
 [rust]
 symbol = ""
-style = "fg:red"
-format = '[ [$symbol ($version) ](fg:red)]($style)'
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
 
 [golang]
 symbol = ""
-style = "fg:red"
-format = '[ [$symbol ($version) ](fg:red)]($style)'
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
 
 [php]
 symbol = ""
-style = ""
-format = '[ [$symbol ($version) ](fg:red)]($style)'
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_lang_bg"
+format = '[[ $symbol( $version) ](fg:color_lang_fg bg:color_lang_bg)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_context_bg"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_context_bg)]($style)'
+
+[conda]
+style = "bg:color_bg5"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg5)]($style)'
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "fg:purple"
-format = '[ [ $time ](fg:purple)]($style)'
-
-# Get editor completions based on the config schema
-# '' = 'https://starship.rs/config-schema.json'
-
-# Disables the custom module
-[custom]
-disabled = false
+time_format = "%R"
+style = "bg:color_time_bg"
+format = '[[  $time ](fg:color_time_fg bg:color_time_bg)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
-[battery]
-disabled = true
+[character]
+disabled = false
+success_symbol = '[ ❯](bold fg:color_blue)'
+error_symbol = '[ ❯](bold fg:color_red)'
+vimcmd_symbol = '[ ❮](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_magenta)'
+vimcmd_replace_symbol = '[❮](bold fg:color_magenta)'
+vimcmd_visual_symbol = '[❮](bold fg:color_yellow)'
