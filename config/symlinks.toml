@@ -27,6 +27,16 @@ target = ".config/tmux/tmux.conf"
 isFile = true
 
 [[dotfiles]]
+source = "dev/dotfiles/config/config"
+target = ".config/ghostty/config"
+isFile = true
+
+[[dotfiles]]
+source = "dev/dotfiles/config/forestfox"
+target = ".config/ghostty/themes/forestfox"
+isFile = true
+
+[[dotfiles]]
 source = "dev/dotfiles/nvim"
 target = ".config/nvim"
 isFile = false
