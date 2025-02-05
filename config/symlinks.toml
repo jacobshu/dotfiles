@@ -18,7 +18,7 @@ isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/.zshenv"
-target = ".config/zsh/.zshenv"
+target = ".zshenv"
 isFile = true
 
 [[dotfiles]]

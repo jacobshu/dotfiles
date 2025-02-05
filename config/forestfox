@@ -23,26 +23,26 @@
 
 palette = 0=#374149
 palette = 1=#da7280
-palette = 2=#a8c180
+palette = 2=#a3c180
 palette = 3=#dbba79
 palette = 4=#7bc29a
 palette = 5=#d694be
 palette = 6=#78b1bd
 palette = 7=#cfc2a4
-palette = 8=#526564
+palette = 8=#526465
 palette = 9=#f1949c
-palette = 10=#b6d881
-palette = 11=#fae2b2
+palette = 10=#ffffff
+palette = 11=#ffffff
 palette = 12=#89e5be
 palette = 13=#fdade4
 palette = 14=#95dae8
 palette = 15=#e5d9bc
-background = #283038
-foreground = #cfc2a4
-cursor-color = #eda173
-cursor-text = #4f4f41
-selection-background = #4f4f41
-selection-foreground = #eda173
+background =#283038
+foreground =#cfc2a4
+cursor-color =#eda173
+cursor-text =#4f4f41
+selection-background =#4f4f41
+selection-foreground =#eda173
 # 16 : Grey0
 # 17 : NavyBlue
 # 18 : DarkBlue

@@ -1,52 +1,210 @@
 [forestfox]
-bg_dim         = "#282b2e"
-bg0            = "#283038"
-bg1            = "#2e373f"
-bg2            = "#374149"
-bg3            = "#404b54"
-bg4            = "#48565c"
-bg5            = "#526465"
+[bg_dim]
+value = "#232b2e"
+ghostty = []
+prose = "stygian"
 
-grey0          = "#778378"
-grey1          = "#869388"
-grey2          = "#9da99e"
-grey3          = "#b2b6a7"
-fg0            = "#c3bda3"
-fg1            = "#cfc2a4"
-fg2            = "#e5d9bc"
+[bg0]
+value = "#283038"
+ghostty = ["background"]
+prose = "tenebrous"
 
-bg_red         = "#513c40"
-dim_red        = "#965e67"
-red            = "#da7280"
-bright_red     = "#f1949c"
+[bg1]
+value = "#2e373f"
+ghostty = []
+prose = "darksome"
 
-bg_magenta     = "#563954"
-dim_magenta    = "#96668c"
-magenta        = "#d694be"
-bright_magenta = "#fdade4"
+[bg2]
+value = "#374149"
+ghostty = ["palette = 0"]
+prose = "gloaming"
 
-bg_blue        = "#374b5f"
-dim_blue       = "#5c7d8e"
-blue           = "#78b1bd"
-bright_blue    = "#95dae8"
+[bg3]
+value = "#404b54"
+ghostty = []
+prose = "gloom"
 
-bg_aqua        = "#375153"
-dim_aqua       = "#5a8b7f"
-aqua           = "#7bc29a"
-bright_aqua    = "#89e5be"
+[bg4]
+value = "#48565c"
+ghostty = []
+prose = "dusk"
 
-bg_green       = "#3c4c44"
-dim_green      = "#678b65"
-green          = "#a3c180"
-bright_green   = "#bbe693"
+[bg5]
+value = "#526465"
+ghostty = ["palette = 8"]
+prose = "twilight"
 
-bg_yellow      = "#4f4f41"
-dim_yellow     = "#857d57"
-yellow         = "#dbba79"
-bright_yellow  = "#f0dd9d"
+[grey0]
+value = "#778378"
+ghostty = []
+prose = "shade"
 
-bg_orange      = "#785335"
-dim_orange     = "#af7852"
-orange         = "#eda173"
-bright_orange  = "#ffa06a"
+[grey1]
+value = "#869388"
+ghostty = []
+prose = "mist"
 
+[grey2]
+value = "#9da99e"
+ghostty = []
+prose = "fog"
+
+[grey3]
+value = "#b2b6a7"
+ghostty = []
+prose = "haze"
+
+[fg0]
+value = "#c3bda3"
+ghostty = []
+prose = "vapor"
+
+[fg1]
+value = "#cfc2a4"
+ghostty = ["foreground", "palette = 7"]
+prose = "cloud"
+
+[fg2]
+value = "#e5d9bc"
+ghostty = ["palette = 15"]
+prose = "dawn"
+
+[bg_red]
+value = "#513c40"
+ghostty = []
+prose = ""
+
+[dim_red]
+value = "#965e67"
+ghostty = []
+prose = ""
+
+[red]
+value = "#da7280"
+ghostty = ["palette = 1"]
+prose = ""
+
+[bright_red]
+value = "#f1949c"
+ghostty = ["palette = 9"]
+prose = ""
+
+[bg_green]
+value = "#3c4c44"
+ghostty = []
+prose = ""
+
+[dim_green]
+value = "#678b65"
+ghostty = []
+prose = ""
+
+[green]
+value = "#a3c180"
+ghostty = ["palette = 2"]
+prose = ""
+
+[bright_green]
+value = "#bbe693"
+ghostty = ["palette = 11"]
+prose = ""
+
+[bg_yellow]
+value = "#4f4f41"
+ghostty = ["cursor-text", "selection-background"]
+prose = ""
+
+[dim_yellow]
+value = "#857d57"
+ghostty = []
+prose = ""
+
+[yellow]
+value = "#dbba79"
+ghostty = ["palette = 3"]
+prose = ""
+
+[bright_yellow]
+value = "#f0dd9d"
+ghostty = ["palette  = 11"]
+prose = ""
+
+[bg_blue]
+value = "#374b5f"
+ghostty = ["palette = 0"]
+prose = ""
+
+[dim_blue]
+value = "#5c7d8e"
+ghostty = []
+prose = ""
+
+[blue]
+value = "#78b1bd"
+ghostty = ["palette = 6"]
+prose = ""
+
+[bright_blue]
+value = "#95dae8"
+ghostty = ["palette = 14"]
+prose = ""
+
+[bg_magenta]
+value = "#563954"
+ghostty = []
+prose = ""
+
+[dim_magenta]
+value = "#96668c"
+ghostty = []
+prose = ""
+
+[magenta]
+value = "#d694be"
+ghostty = ["palette = 5"]
+prose = ""
+
+[bright_magenta]
+value = "#fdade4"
+ghostty = ["palette = 13"]
+prose = ""
+
+[bg_aqua]
+value = "#375153"
+ghostty = []
+prose = ""
+
+[dim_aqua]
+value = "#5a8b7f"
+ghostty = []
+prose = ""
+
+[aqua]
+value = "#7bc29a"
+ghostty = ["palette = 4"]
+prose = ""
+
+[bright_aqua]
+value = "#89e5be"
+ghostty = ["palette = 12"]
+prose = ""
+
+[bg_orange]
+value = "#785335"
+ghostty = []
+prose = ""
+
+[dim_orange]
+value = "#af7852"
+ghostty = []
+prose = ""
+
+[orange]
+value = "#eda173"
+ghostty = ["cursor-color", "selection-foreground"]
+prose = ""
+
+[bright_orange]
+value = "#ffa06a"
+ghostty = []
+prose = ""
