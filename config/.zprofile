@@ -15,6 +15,11 @@ export PATH="$PATH:$HOME/flutter/bin"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+#postgres
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# golang packages
+export PATH="$HOME/go/bin:$PATH"
 
 # setup for android development
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -22,9 +27,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools=
-
-# golang
-export PATH=$PATH:$HOME/go/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

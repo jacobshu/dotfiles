@@ -17,8 +17,8 @@ target = ".config/zsh/.zshrc"
 isFile = true
 
 [[dotfiles]]
-source = "dev/dotfiles/config/.zshenv"
-target = ".zshenv"
+source = "dev/dotfiles/config/.zprofile"
+target = ".zprofile"
 isFile = true
 
 [[dotfiles]]
