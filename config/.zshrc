@@ -58,6 +58,9 @@ vimme() {
     echo "port: ${port}"
 
     port_option="ssh -p ${port}"
+    # distribute ghostty's terminfo
+    infocmp -x | ssh $name_and_ip -p $port -- tic -x -
+
     rsync -vzh -e "${port_option}" $HOME/dev/dotfiles/config/.vimrc $name@$ip:
 }
 
