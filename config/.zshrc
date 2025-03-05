@@ -40,28 +40,59 @@ run () {
 
 vimme() {
     # Check if minimum required arguments are provided
-    if [[ $# -gt 4 || $# -lt 4 ]]; then
-        echo "Usage: vimme [connection string]"
-        echo "Example: vimme ssh installname@22.222.222.222 -p 12345"
+    mode=$1
+    if [[ $mode == "ssh" ]]; then
+      if [[ $# -gt 4 || $# -lt 4 ]]; then
+          echo "Usage: vimme ssh [connection string]"
+          echo "       vimme ssh installname@22.222.222.222 -p 12345"
+          return 1
+      fi
+
+      name_and_ip=$2
+      port=$4
+
+      array=("${(@s:@:)name_and_ip}")
+      name=${array[1]}
+      ip=${array[2]}
+
+      echo "name: ${name}"
+      echo "ip  : ${ip}"
+      echo "port: ${port}"
+
+      port_option="ssh -p ${port}"
+      # distribute ghostty's terminfo
+      infocmp -x | ssh $name_and_ip -p $port -- tic -x -
+
+      rsync -vzh -e "${port_option}" $HOME/dev/dotfiles/config/.vimrc $name@$ip:
+
+    elif [[ $mode == "vps" ]]; then 
+      if [[ $# -gt 2 || $# -lt 2 ]]; then
+        echo "Usage: vimme vps [username@server]"
+        echo "       vimme vps username@22.222.222.222"
         return 1
+      fi
+
+      name_and_ip=$2
+
+      array=("${(@s:@:)name_and_ip}")
+      name=${array[1]}
+      ip=${array[2]}
+
+      echo "name: ${name}"
+      echo "ip  : ${ip}"
+
+      # distribute ghostty's terminfo
+      infocmp -x | ssh $name_and_ip -- tic -x -
+
+      rsync -vzhr $HOME/dev/dotfiles/nvim $name@$ip:.config/
+
     fi
 
-    name_and_ip=$2
-    port=$4
+    echo "Usage: vimme mode [connection string]"
+    echo "       vimme ssh installname@22.222.222.222 -p 12345"
+    echo "       vimme vps username@22.222.222.222"
+    return 1
 
-    array=("${(@s:@:)name_and_ip}")
-    name=${array[1]}
-    ip=${array[2]}
-
-    echo "name: ${name}"
-    echo "ip  : ${ip}"
-    echo "port: ${port}"
-
-    port_option="ssh -p ${port}"
-    # distribute ghostty's terminfo
-    infocmp -x | ssh $name_and_ip -p $port -- tic -x -
-
-    rsync -vzh -e "${port_option}" $HOME/dev/dotfiles/config/.vimrc $name@$ip:
 }
 
 # env variables
