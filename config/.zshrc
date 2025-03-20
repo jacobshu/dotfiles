@@ -6,13 +6,16 @@ else
 fi
 
 # Aliases
-alias zshconfig="nvim ~/.zshrc"
+alias zshconfig='nvim ~/.zshrc'
 alias simulator='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
 alias dontbestupid='open -n /Applications/Visual\ Studio.app/Contents/MacOS/VisualStudio'
 alias dot='cd ~/dev/dotfiles'
 alias dev='cd ~/dev'
 alias up='brew upgrade'
-alias love="/Applications/love.app/Contents/MacOS/love"
+alias love='/Applications/love.app/Contents/MacOS/love'
+alias l='lsd -lh'
+alias ll='lsd -lah'
+alias rise='dot && git pull && brew upgrade'
 
 # Utility functions
 woffer () {
@@ -94,6 +97,9 @@ vimme() {
     return 1
 
 }
+
+# config for op gh
+source /Users/jacobshu/.config/op/plugins.sh
 
 # env variables
 export ANTHROPIC_API_KEY=op://Employee/Anthropic/credentials/personal_token
