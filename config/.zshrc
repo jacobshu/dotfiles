@@ -104,4 +104,5 @@ source /Users/jacobshu/.config/op/plugins.sh
 # env variables
 export ANTHROPIC_API_KEY=op://Employee/Anthropic/credentials/personal_token
 
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
