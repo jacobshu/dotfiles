@@ -17,6 +17,7 @@ return {
 					"go",
 					"html",
 					"javascript",
+					"jinja",
 					"json",
 					"lua",
 					"markdown",

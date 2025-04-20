@@ -13,6 +13,7 @@ M.setup = function()
 			"go",
 			"html",
 			"javascript",
+			"jinja",
 			"json",
 			"lua",
 			"markdown",
