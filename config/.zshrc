@@ -102,7 +102,7 @@ vimme() {
 source /Users/jacobshu/.config/op/plugins.sh
 
 # env variables
-export ANTHROPIC_API_KEY=op://Employee/Anthropic/credentials/personal_token
+export ANTHROPIC_API_KEY="op://Private/Anthropic API/credential"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

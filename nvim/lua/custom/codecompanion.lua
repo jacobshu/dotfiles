@@ -3,7 +3,7 @@ require("codecompanion").setup({
 		anthropic = function()
 			return require("codecompanion.adapters").extend("anthropic", {
 				env = {
-					api_key = 'cmd:op read "op://Employee/Anthropic API/credential" --no-newline',
+					api_key = 'cmd:op read "op://Private/Anthropic API/credential" --no-newline --account WR3MMMCNNZCNNDQKQ4YRVN6HWA',
 				},
 			})
 		end,

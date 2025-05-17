@@ -58,6 +58,7 @@ return {
 						semanticTokensProvider = vim.NIL,
 					},
 				},
+				pico8_ls = true,
 				svelte = true,
 				intelephense = true,
 				mdx_analyzer = true,
