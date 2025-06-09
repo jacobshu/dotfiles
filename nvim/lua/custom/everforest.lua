@@ -1,4 +1,4 @@
-local ff = require("custom/forestfox")
+local ff = require("config.forestfox")
 
 require("everforest").setup({
 	background = "medium",

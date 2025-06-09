@@ -1,5 +1,5 @@
 -- Forestfox config for lualine
-local ff = require('custom/forestfox')
+local ff = require('config.forestfox')
 
 local function wordcount()
     return tostring(vim.fn.wordcount().words) .. ' words'

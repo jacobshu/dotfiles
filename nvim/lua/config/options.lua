@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+vim.g.mapleader = " "
+
 opt.guicursor = "a:block,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- You have to turn this one on :)
