@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+    version = false,
 		build = ":TSUpdate",
 		branch = "master",
 		lazy = false,
@@ -36,7 +37,14 @@ return {
 				ignore_install = {},
 				sync_install = true,
 				auto_install = true,
-
+--- 1020  x 287   292740
+---  222  x  89    19758
+---  214  x 138    29532
+---  848  x 184   113632
+---  312  x 114    35568
+---               491230
+---                 3411
+---  (593 garage)   2818
 				highlight = {
 					enable = true,
 					disable = {},
