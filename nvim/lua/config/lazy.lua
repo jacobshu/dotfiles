@@ -8,31 +8,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ import = "plugins" }, {
-    install = {
-        missing = true,
-        colorscheme = { "habamax" }
-    },
+require("lazy").setup({
+	spec = {
+	{ import = "plugins" }
+	}, {
     checker = {
         enabled = true,
         notify = false,
     },
-    change_detection = {
-        enabled = true,
-        notify = false,
-    },
-    ui = {
-        -- border = "rounded"
-    },
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                "gzip",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
     },
 })

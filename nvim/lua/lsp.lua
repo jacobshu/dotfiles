@@ -1,5 +1,3 @@
-print("eval lsp.lua")
-
 vim.lsp.enable({
 	"lua-ls",
 	"gopls",

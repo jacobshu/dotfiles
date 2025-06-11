@@ -1,3 +1,6 @@
 return {
-  "mbbill/undotree"
+  "mbbill/undotree",
+  config = function()
+    
+  end,
 }

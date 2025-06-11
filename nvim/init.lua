@@ -1,7 +1,7 @@
--- require("jacobshu")
-require("core.lsp")
+require("options")
 
-require("config.options")
-require("config.keymaps")
+require("config.lazy")
+require("autocmds")
+require("lsp")
+require("keymaps")
 
-require("core.lazy")

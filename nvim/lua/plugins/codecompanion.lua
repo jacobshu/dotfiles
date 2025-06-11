@@ -21,11 +21,11 @@ return {
         adapter = "anthropic",
         keymaps = {
           accept_change = {
-            modes = { n = "<leader>a" },
+            modes = { n = "<leader>ca" },
             description = "Accept the suggested change",
           },
           reject_change = {
-            modes = { n = "<leader>r" },
+            modes = { n = "<leader>cr" },
             description = "Reject the suggested change",
           },
         },
@@ -39,15 +39,4 @@ return {
         provider = "telescope",
       },
     },
-    config = function()
-      vim.keymap.set({ "n", "v" }, "<Leader>ac", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-
-      vim.keymap.set(
-        { "n", "v" },
-        "<Leader>ch",
-        "<cmd>CodeCompanionChat Toggle<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.keymap.set("v", "<Leader>ah", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-	end,
 }
