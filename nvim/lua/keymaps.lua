@@ -29,8 +29,8 @@ set("n", "<C-j>", "<cmd>cprev<CR>zz")
 set("n", "<leader>k", "<cmd>lnext<CR>zz")
 set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-set("n", "<leader>s", 
-  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], 
+set("n", "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "search and replace word under cursor" }
 )
 
@@ -66,4 +66,7 @@ set("n", "<leader>pr", builtin.registers, { desc = "list registers" })
 set("n", "<leader>pg", builtin.live_grep, { desc = "live grep the project" })
 
 -- undotree
-set("n", "<leader>U", vim.cmd.UndotreeToggle)
+set("n", "<leader>U", vim.cmd.UndotreeToggle, { desc = "open undotree" })
+
+-- completion scrolling
+-- set("i", '"', '""<left>', { noremap = true })
