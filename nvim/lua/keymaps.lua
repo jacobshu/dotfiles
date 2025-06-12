@@ -69,4 +69,11 @@ set("n", "<leader>pg", builtin.live_grep, { desc = "live grep the project" })
 set("n", "<leader>U", vim.cmd.UndotreeToggle, { desc = "open undotree" })
 
 -- completion scrolling
--- set("i", '"', '""<left>', { noremap = true })
+-- inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
+set("i", "<Tab>", function()
+  if vim.fn.pumvisible() then
+    return "<c-y>"
+  else
+    return "<Tab>"
+  end
+end, { noremap = true })

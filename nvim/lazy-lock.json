@@ -1,5 +1,5 @@
 {
-  "codecompanion.nvim": { "branch": "main", "commit": "1deecbeb4f501f99c3015ca41488e008a132bd35" },
+  "codecompanion.nvim": { "branch": "main", "commit": "ba7bee5ce1883dd7585fc1f423f2bc82fbdf51a6" },
   "everforest-nvim": { "branch": "main", "commit": "2eb7c348f880ba93de4d98cae049c9441f5d4d49" },
   "harpoon": { "branch": "master", "commit": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },

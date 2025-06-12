@@ -4,11 +4,11 @@ vim.lsp.enable({
   "lua-ls",
   "gopls",
   "ts-ls",
-  "intelephense",
 })
 
 vim.diagnostic.config({
   virtual_text = true,
+  current_line = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
@@ -31,7 +31,6 @@ vim.diagnostic.config({
 })
 
 -- Extras
-
 local function restart_lsp(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   local clients
