@@ -34,6 +34,8 @@ set("n", "<leader>s",
   { desc = "search and replace word under cursor" }
 )
 
+set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+
 -- execute file
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "execute the current line" })
 set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "execute the current file" })
@@ -68,12 +70,4 @@ set("n", "<leader>pg", builtin.live_grep, { desc = "live grep the project" })
 -- undotree
 set("n", "<leader>U", vim.cmd.UndotreeToggle, { desc = "open undotree" })
 
--- completion scrolling
--- inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
-set("i", "<Tab>", function()
-  if vim.fn.pumvisible() then
-    return "<c-y>"
-  else
-    return "<Tab>"
-  end
-end, { noremap = true })
+

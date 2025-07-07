@@ -1,0 +1,27 @@
+{
+  "name": "forestfox",
+
+  "cursorColor": "#eda173",
+  "selectionBackground": "#4f4f41",
+
+  "background": "#283038",
+  "foreground": "#cfc2a4",
+
+  "black":    "#374149",
+  "magenta":  "#d694be",
+  "red":      "#da7280",
+  "yellow":   "#dbba79",
+  "green":    "#a8c180",
+  "cyan":     "#7bc29a",
+  "blue":     "#78b1bd",
+  "white":    "#cfc2a4",
+
+  "brightBlack":    "#526564",
+  "brightRed":      "#f1949c",
+  "brightGreen":    "#b6d881",
+  "brightYellow":   "#fae2b2",
+  "brightBlue":     "#95dae8",
+  "brightMagenta":  "#fdade4",
+  "brightCyan":     "#89e5be",
+  "brightWhite":    "#e5d9bc"
+}
