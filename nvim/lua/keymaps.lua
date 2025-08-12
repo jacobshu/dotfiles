@@ -70,4 +70,5 @@ set("n", "<leader>pg", builtin.live_grep, { desc = "live grep the project" })
 -- undotree
 set("n", "<leader>U", vim.cmd.UndotreeToggle, { desc = "open undotree" })
 
-
+-- lsp
+set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "open diagnostic text in hover window" })
