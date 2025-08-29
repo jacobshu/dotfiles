@@ -9,3 +9,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     })
   end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    local shada_path = vim.fn.stdpath("data") .. "/shada/" .. dir_name .. ".shada"
+    vim.opt.shadafile = shada_path
+  end,
+})
+
+vim.fn.mkdir(vim.fn.stdpath("data") .. "/shada", "p")

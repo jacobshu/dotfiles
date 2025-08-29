@@ -13,6 +13,7 @@ return {
       "gopls",
       "lua_ls",
       "ts_ls",
+      "vue_ls",
     }
   },
 }
