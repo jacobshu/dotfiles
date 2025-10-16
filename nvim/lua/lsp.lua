@@ -1,44 +1,8 @@
-vim.lsp.config('lua_ls', {
-  on_init = function(client)
-    if client.workspace_folders then
-      local path = client.workspace_folders[1].name
-      if
-          path ~= vim.fn.stdpath('config')
-          and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-      then
-        return
-      end
-    end
+local M = {}
 
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most
-        -- likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Tell the language server how to find Lua modules same way as Neovim
-        -- (see `:h lua-module-load`)
-        path = {
-          'lua/?.lua',
-          'lua/?/init.lua',
-        },
-      },
-      -- Make the server aware of Neovim runtime files
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-          -- Depending on the usage, you might want to add additional paths
-          -- here.
-          -- '${3rd}/luv/library'
-          -- '${3rd}/busted/library'
-        }
-      }
-    })
-  end,
-  settings = {
-    Lua = {}
-  }
-})
+-- Load lua_ls configuration from separate file
+local lua_ls_config = require('lsp.lua_ls')
+vim.lsp.config('lua_ls', lua_ls_config)
 
 vim.diagnostic.config({
   virtual_lines = true,
@@ -65,19 +29,11 @@ vim.diagnostic.config({
 })
 
 -- Extras
-local function restart_lsp(bufnr)
+function M.restart_lsp(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   local clients
-  if vim.lsp.get_clients then
-    clients = vim.lsp.get_clients({ bufnr = bufnr })
-  else
-    --@diagnostic disable-next-line: deprecated
-    clients = vim.lsp.get_active_clients({ bufnr = bufnr })
-  end
-
-  for _, client in ipairs(clients) do
-    vim.lsp.stop_client(client.id)
-  end
+  clients = vim.lsp.get_clients({ bufnr = bufnr })
+  vim.lsp.stop_client(clients)
 
   vim.defer_fn(function()
     vim.cmd("edit")
@@ -85,13 +41,12 @@ local function restart_lsp(bufnr)
 end
 
 vim.api.nvim_create_user_command("LspRestart", function()
-  restart_lsp()
+  M.restart_lsp()
 end, {})
 
-local function lsp_status()
+function M.lsp_status()
   local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr })
-      or vim.lsp.get_active_clients({ bufnr = bufnr })
+  local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
   if #clients == 0 then
     print("󰅚 No LSP clients attached")
@@ -99,14 +54,12 @@ local function lsp_status()
   end
 
   print("LSP Status for buffer " .. bufnr .. ":")
-  print("------------------------------")
+  print("──────────────────────────────────────")
 
   for i, client in ipairs(clients) do
     print(string.format("󰌘 Client %d: %s (ID: %d)", i, client.name, client.id))
     print("  Root: " .. (client.config.root_dir or "N/A"))
     print("  Filetypes: " .. table.concat(client.config.filetypes or {}, ", "))
-
-    -- Check capabilities
     local caps = client.server_capabilities
     local features = {}
     if caps ~= nil then
@@ -133,12 +86,12 @@ local function lsp_status()
       end
 
       print("  Features: " .. table.concat(features, ", "))
-      print("")
+      print("\n")
     end
   end
 end
 
-vim.api.nvim_create_user_command("LspStatus", lsp_status, { desc = "Show detailed LSP status" })
+vim.api.nvim_create_user_command("LspStatus", M.lsp_status, { desc = "Show detailed LSP status" })
 
 local function check_lsp_capabilities()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -269,6 +222,7 @@ local function lsp_info()
 
     -- Key capabilities
     local caps = client.server_capabilities
+    if caps == nil then return end
     local key_features = {}
     if caps.completionProvider then
       table.insert(key_features, "completion")
@@ -376,3 +330,5 @@ vim.opt.statusline = table.concat({
   " %l:%c",                -- Line:Column
   " %p%%",                 -- Percentage through file
 }, " ")
+
+return M
