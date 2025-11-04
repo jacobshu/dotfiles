@@ -6,15 +6,25 @@ return {
 		branch = "master",
 		lazy = false,
 		config = function()
+			-- On Windows, prefer downloading pre-compiled binaries
+			require("nvim-treesitter.install").prefer_git = false
+			require("nvim-treesitter.install").compilers = { "clang", "gcc", "cl" }
+			
 			require("nvim-treesitter.configs").setup({
 				modules = {},
 				ensure_installed = {
 					"astro",
 					"c_sharp",
 					"c",
+                    "cpp",
 					"css",
 					"csv",
 					"dart",
+					-- "git_config",
+					-- "git_rebase",
+					-- "gitattributes",
+					-- "gitcommit",
+					"gitignore",
 					"go",
 					"html",
 					"javascript",
@@ -37,14 +47,6 @@ return {
 				ignore_install = {},
 				sync_install = true,
 				auto_install = true,
---- 1020  x 287   292740
----  222  x  89    19758
----  214  x 138    29532
----  848  x 184   113632
----  312  x 114    35568
----               491230
----                 3411
----  (593 garage)   2818
 				highlight = {
 					enable = true,
 					disable = {},
