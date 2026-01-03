@@ -87,8 +87,17 @@ set("n", "<leader>fh", builtin.help_tags, { desc = "Find help" })
 -- Project navigation (keep some <leader>p for project-related)
 set("n", "<leader>pv", vim.cmd.Ex, { desc = "Project view (netrw)" })
 
+-- Window navigation
+set("n", "<leader>pk", "<C-w>k", { desc = "Move pane focus up" })
+set("n", "<leader>pj", "<C-w>j", { desc = "Move pane focus down" })
+set("n", "<leader>ph", "<C-w>h", { desc = "Move pane focus left" })
+set("n", "<leader>pl", "<C-w>l", { desc = "Move pane focus right" })
+
 -- Utilities
 set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
+
+-- Treesitter
+set("n", "<leader>ti", vim.cmd.InspectTree, { desc = "Inspect tree sitter AST" })
 
 -- LSP utilities
 local lsputils = require("lsp")
@@ -173,10 +182,9 @@ set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
 set('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
 set('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
 set('n', '<leader>hb', function() gs.blame_line{full=true} end, { desc = 'Blame line' })
-set('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle line blame' })
 set('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
 set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
-set('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle deleted' })
+-- set('n', '<leader>hd', gs.toggle_deleted, { desc = 'Toggle deleted' })
 
 -- Text object
 set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
