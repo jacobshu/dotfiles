@@ -93,8 +93,9 @@ set("n", "<leader>pj", "<C-w>j", { desc = "Move pane focus down" })
 set("n", "<leader>ph", "<C-w>h", { desc = "Move pane focus left" })
 set("n", "<leader>pl", "<C-w>l", { desc = "Move pane focus right" })
 
--- Utilities
-set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
+-- UndoTree
+local ut = require("undotree")
+set("n", "<leader>u", function() ut.toggle() end, { desc = "Toggle undotree" })
 
 -- Treesitter
 set("n", "<leader>ti", vim.cmd.InspectTree, { desc = "Inspect tree sitter AST" })

@@ -1,6 +1,8 @@
 return {
-  "mbbill/undotree",
-  config = function()
-    
-  end,
+  "jiaoshijie/undotree",
+  ---@module 'undotree.collector'
+  ---@type UndoTreeCollector.Opts
+  opts = {
+
+  },
 }
