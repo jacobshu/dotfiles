@@ -1,11 +1,11 @@
 local ff = require("config.forestfox")
 
 return {
-	{
-		"neanias/everforest-nvim",
-		version = false,
-		lazy = false,
-		priority = 1000,
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000,
     opts = {
       background = "medium",
       transparent_background_level = 0,
@@ -56,9 +56,9 @@ return {
         palette.statusline3 = ff.red
       end,
     },
-		config = function()
-			-- require("custom/everforest")
-			vim.cmd.colorscheme("everforest")
-		end,
-	},
+    config = function()
+      -- require("custom/everforest")
+      vim.cmd.colorscheme("everforest")
+    end,
+  },
 }
