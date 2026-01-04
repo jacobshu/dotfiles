@@ -100,9 +100,10 @@ set("n", "<leader>ga", "<cmd>Git add %<cr>", { desc = "Git add current file" })
 set("n", "<leader>gA", "<cmd>Git add .<cr>", { desc = "Git add all" })
 set("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git commit" })
 set("n", "<leader>gC", "<cmd>Git commit --amend<cr>", { desc = "Git commit amend" })
-set("n", "<leader>gp", "<cmd>Git push<cr>", { desc = "Git push" })
-set("n", "<leader>gP", "<cmd>Git pull<cr>", { desc = "Git pull" })
+set("n", "<leader>gp", "<cmd>Git pull<cr>", { desc = "Git pull" })
+set("n", "<leader>gP", "<cmd>Git push<cr>", { desc = "Git push" })
 set("n", "<leader>gf", "<cmd>Git fetch<cr>", { desc = "Git fetch" })
+set("n", "<leader>gM", "<cmd>Git merge master<cr>", { desc = "Git merge master" })
 
 -- Branch operations
 set("n", "<leader>gb", builtin.git_branches, { desc = "Git branch picker" })

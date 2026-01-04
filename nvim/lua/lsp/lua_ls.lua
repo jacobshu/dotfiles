@@ -37,7 +37,7 @@ return {
       },
       -- Configure diagnostics
       diagnostics = {
-        globals = { 'vim', 'Echo' },
+        globals = { 'vim', 'Echo', 'love' },
       },
       -- Make the server aware of Neovim runtime files
       workspace = {

@@ -12,6 +12,7 @@ return {
       "eslint",
       "gopls",
       "lua_ls",
+      "powershell_es",
       "ts_ls",
       "vue_ls",
     }
