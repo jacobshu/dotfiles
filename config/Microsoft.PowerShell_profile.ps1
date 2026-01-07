@@ -1,11 +1,11 @@
 function cdzd { Join-Path -Path $HOME -ChildPath 'source/repos' | Set-Location }
 function cddot { Join-Path -Path $HOME -ChildPath 'source/repos/dotfiles' | Set-Location }
-function cdconfig { Set-Location 'C:\ProgramData\zdScada\Config' | nvim . }
+function editconfig { nvim 'C:\ProgramData\zdScada\Config' }
 function cdlogs { Set-Location 'C:\ProgramData\zdScada\Logs' }
 
 Set-Alias -Name dev -Value cdzd
 Set-Alias -Name dot -Value cddot
-Set-Alias -Name cfg -Value cdconfig
+Set-Alias -Name cfg -Value editconfig
 Set-Alias -Name logs -Value cdlogs
 Set-Alias -Name runzd -Value Run-ZdProjects
 
