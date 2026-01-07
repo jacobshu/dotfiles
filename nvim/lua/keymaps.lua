@@ -25,7 +25,8 @@ set("n", "<leader>k", "<cmd>lnext<CR>zz")
 set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Search and replace
-set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "search and replace word under cursor" })
+set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "search and replace word under cursor" })
 
 set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
 
@@ -63,6 +64,11 @@ set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Diagnostic quickfix" 
 set({ "n", "v" }, "<Leader>ia", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 set({ "n", "v" }, "<Leader>ic", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 set("v", "<Leader>ah", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+local _99 = require("99")
+set("n", "<leader>9f", function() _99.fill_in_function() end, { desc = "fill in function" })
+set("v", "<leader>9v", function() _99.visual() end, { desc = "something visual" })
+set("v", "<leader>9s", function() _99.stop_all_requests() end, { desc = "cancel request" })
 
 -- harpoon
 local mark = require("harpoon.mark")
@@ -166,27 +172,29 @@ set('n', ']c', function()
   if vim.wo.diff then return ']c' end
   vim.schedule(function() gs.next_hunk() end)
   return '<Ignore>'
-end, {expr=true, desc = 'Next git hunk'})
+end, { expr = true, desc = 'Next git hunk' })
 
 set('n', '[c', function()
   if vim.wo.diff then return '[c' end
   vim.schedule(function() gs.prev_hunk() end)
   return '<Ignore>'
-end, {expr=true, desc = 'Previous git hunk'})
+end, { expr = true, desc = 'Previous git hunk' })
 
 -- Hunk operations
 set('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
 set('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset hunk' })
-set('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Stage hunk selection' })
-set('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'Reset hunk selection' })
+set('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+  { desc = 'Stage hunk selection' })
+set('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+  { desc = 'Reset hunk selection' })
 set('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
 set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
 set('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
 set('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
-set('n', '<leader>hb', function() gs.blame_line{full=true} end, { desc = 'Blame line' })
+set('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = 'Blame line' })
 set('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
 set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
 -- set('n', '<leader>hd', gs.toggle_deleted, { desc = 'Toggle deleted' })
 
 -- Text object
-set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
+set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
