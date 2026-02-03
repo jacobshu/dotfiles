@@ -2,6 +2,17 @@ local M = {}
 
 -- Load lua_ls configuration from separate file
 local lua_ls_config = require('lsp.lua_ls')
+
+-- Add nvim-cmp completion capabilities when available.
+-- This is safe even if the plugin isn't loaded yet.
+do
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+  if ok then
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+  end
+  lua_ls_config.capabilities = capabilities
+end
 vim.lsp.config('lua_ls', lua_ls_config)
 
 vim.diagnostic.config({
