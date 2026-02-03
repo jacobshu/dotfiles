@@ -92,7 +92,8 @@ return {
     table.insert(header_hl, {                                 -- Line 11
       { "AlphaHeader1_0", 7,  22 },
       { "AlphaHeader1_1", 33, 40 },
-      { "AlphaHeader1_2", 40, 50 }
+      { "AlphaHeader1_2", 40, 48 },
+      { "AlphaHeader1_3", 48, 50 },
     })
     table.insert(header_hl, { -- Line 12
       { "AlphaHeader2_0", 6,  21 },
@@ -132,41 +133,46 @@ return {
       { "AlphaHeader7_3", 46, 90 },
     })
     table.insert(header_hl, { -- Line 18
-      { "AlphaHeader8_0", 1,  37 },
-      { "AlphaHeader8_1", 37, 91 },
+      { "AlphaHeader8_0", 1,  18 },
+      { "AlphaHeader8_1", 18, 37 },
+      { "AlphaHeader8_2", 37, 91 },
     })
 
-    vim.api.nvim_set_hl(0, "AlphaHeader0_0", { fg = "#a6c9ab" })
-    vim.api.nvim_set_hl(0, "AlphaHeader1_0", { fg = "#bb7744" })
-    vim.api.nvim_set_hl(0, "AlphaHeader1_1", { fg = "#386c3f" })
-    vim.api.nvim_set_hl(0, "AlphaHeader1_2", { fg = "#a6c9ab" })
-    vim.api.nvim_set_hl(0, "AlphaHeader2_0", { fg = "#be7d46" })
-    vim.api.nvim_set_hl(0, "AlphaHeader2_1", { fg = "#3d7344" })
-    vim.api.nvim_set_hl(0, "AlphaHeader3_0", { fg = "#c18250" })
-    vim.api.nvim_set_hl(0, "AlphaHeader3_1", { fg = "#5c441e" })
-    vim.api.nvim_set_hl(0, "AlphaHeader3_2", { fg = "#d6c383" })
-    vim.api.nvim_set_hl(0, "AlphaHeader3_3", { fg = "#407b48" })
-    vim.api.nvim_set_hl(0, "AlphaHeader3_4", { fg = "#98c09c" })
-    vim.api.nvim_set_hl(0, "AlphaHeader4_0", { fg = "#c38950" })
-    vim.api.nvim_set_hl(0, "AlphaHeader4_1", { fg = "#e0c785" })
-    vim.api.nvim_set_hl(0, "AlphaHeader4_2", { fg = "#44844b" })
-    vim.api.nvim_set_hl(0, "AlphaHeader4_3", { fg = "#a0c4a3" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_0", { fg = "#c58f56" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_1", { fg = "#e2cb85" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_2", { fg = "#5c441e" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_3", { fg = "#e2cb85" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_4", { fg = "#488c51" })
-    vim.api.nvim_set_hl(0, "AlphaHeader5_5", { fg = "#a6c9ab" })
-    vim.api.nvim_set_hl(0, "AlphaHeader6_0", { fg = "#c7955b" })
-    vim.api.nvim_set_hl(0, "AlphaHeader6_1", { fg = "#e3cf88" })
-    vim.api.nvim_set_hl(0, "AlphaHeader6_2", { fg = "#4d9356" })
-    vim.api.nvim_set_hl(0, "AlphaHeader6_3", { fg = "#aecdb3" })
-    vim.api.nvim_set_hl(0, "AlphaHeader7_0", { fg = "#c89b62" })
-    vim.api.nvim_set_hl(0, "AlphaHeader7_1", { fg = "#e5d38a" })
-    vim.api.nvim_set_hl(0, "AlphaHeader7_2", { fg = "#509b59" })
-    vim.api.nvim_set_hl(0, "AlphaHeader7_3", { fg = "#b7d1b9" })
-    vim.api.nvim_set_hl(0, "AlphaHeader8_0", { fg = "#5c441e" })
-    vim.api.nvim_set_hl(0, "AlphaHeader8_1", { fg = "#2e4e2a" })
+    local ff = require("config.forestfox")
+
+    vim.api.nvim_set_hl(0, "AlphaHeader0_0", { fg = ff.bright_magenta })
+    vim.api.nvim_set_hl(0, "AlphaHeader1_0", { fg = ff.bg2 })
+    vim.api.nvim_set_hl(0, "AlphaHeader1_1", { fg = ff.bg2 })
+    vim.api.nvim_set_hl(0, "AlphaHeader1_2", { fg = ff.magenta })
+    vim.api.nvim_set_hl(0, "AlphaHeader1_3", { fg = ff.dim_magenta })
+    vim.api.nvim_set_hl(0, "AlphaHeader2_0", { fg = ff.bg3 })
+    vim.api.nvim_set_hl(0, "AlphaHeader2_1", { fg = ff.bg3 })
+    vim.api.nvim_set_hl(0, "AlphaHeader3_0", { fg = ff.bg4 })
+    vim.api.nvim_set_hl(0, "AlphaHeader3_1", { fg = ff.bg4 })
+    vim.api.nvim_set_hl(0, "AlphaHeader3_2", { fg = ff.bg4 })
+    vim.api.nvim_set_hl(0, "AlphaHeader3_3", { fg = ff.bg4 })
+    vim.api.nvim_set_hl(0, "AlphaHeader3_4", { fg = ff.bg4 })
+    vim.api.nvim_set_hl(0, "AlphaHeader4_0", { fg = ff.bg5 })
+    vim.api.nvim_set_hl(0, "AlphaHeader4_1", { fg = ff.bg5 })
+    vim.api.nvim_set_hl(0, "AlphaHeader4_2", { fg = ff.bg5 })
+    vim.api.nvim_set_hl(0, "AlphaHeader4_3", { fg = ff.bg5 })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_0", { fg = ff.dim_blue })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_1", { fg = ff.dim_yellow })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_2", { fg = ff.bg_orange })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_3", { fg = ff.dim_yellow })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_4", { fg = ff.dim_aqua })
+    vim.api.nvim_set_hl(0, "AlphaHeader5_5", { fg = ff.dim_green })
+    vim.api.nvim_set_hl(0, "AlphaHeader6_0", { fg = ff.blue })
+    vim.api.nvim_set_hl(0, "AlphaHeader6_1", { fg = ff.yellow })
+    vim.api.nvim_set_hl(0, "AlphaHeader6_2", { fg = ff.aqua })
+    vim.api.nvim_set_hl(0, "AlphaHeader6_3", { fg = ff.green })
+    vim.api.nvim_set_hl(0, "AlphaHeader7_0", { fg = ff.bright_blue })
+    vim.api.nvim_set_hl(0, "AlphaHeader7_1", { fg = ff.bright_yellow })
+    vim.api.nvim_set_hl(0, "AlphaHeader7_2", { fg = ff.bright_aqua })
+    vim.api.nvim_set_hl(0, "AlphaHeader7_3", { fg = ff.bright_green })
+    vim.api.nvim_set_hl(0, "AlphaHeader8_0", { fg = ff.bg_blue })
+    vim.api.nvim_set_hl(0, "AlphaHeader8_1", { fg = ff.bg_orange })
+    vim.api.nvim_set_hl(0, "AlphaHeader8_2", { fg = ff.bg_green })
 
     local utils = require('alpha.utils')
 
