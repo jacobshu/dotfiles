@@ -26,3 +26,23 @@
     (#set! injection.language "xml")
   )
 )
+
+(
+  (comment
+    content: (comment_content) @dbquery-type
+    (#eq? @dbquery-type "-@sql")
+  )
+  (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier))
+      (expression_list 
+        value: (string 
+          content: (string_content) @injection.content
+        )
+      )
+      (#set! injection.language "sql")
+    )
+  )
+)
+
