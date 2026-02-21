@@ -8,6 +8,7 @@ return {
     ensure_installed = {
       "astro",
       "bashls",
+      "clangd",
       "csharp_ls",
       "eslint",
       "gopls",
@@ -17,4 +18,17 @@ return {
       "vue_ls",
     }
   },
+  config = function(_, opts)
+    require("mason-lspconfig").setup(opts)
+
+    -- Configure clangd with a compile-commands-dir fallback
+    vim.lsp.config("clangd", {
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--compile-commands-dir=build",
+      },
+    })
+  end,
 }

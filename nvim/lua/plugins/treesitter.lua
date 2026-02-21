@@ -8,7 +8,7 @@ return {
     config = function()
       -- On Windows, prefer downloading pre-compiled binaries
       require("nvim-treesitter.install").prefer_git = false
-      require("nvim-treesitter.install").compilers = { "clang", "gcc", "cl" }
+      require("nvim-treesitter.install").compilers = { "zig", "clang", "gcc", "cl" }
 
       require("nvim-treesitter.configs").setup({
         modules = {},
@@ -23,7 +23,7 @@ return {
           -- "git_config",
           -- "git_rebase",
           -- "gitattributes",
-          -- "gitcommit",
+          "gitcommit",
           "gitignore",
           "go",
           "html",
@@ -46,7 +46,7 @@ return {
         },
         ignore_install = {},
         sync_install = true,
-        auto_install = true,
+        auto_install = false,
         highlight = {
           enable = true,
           disable = {},
