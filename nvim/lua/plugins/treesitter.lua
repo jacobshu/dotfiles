@@ -27,6 +27,7 @@ return {
           "gitignore",
           "go",
           "html",
+          "hurl",
           "javascript",
           "jinja",
           "json",
