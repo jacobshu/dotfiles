@@ -1,8 +1,20 @@
 return {
   {
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
     opts = {
-      "css",
+      parsers = {
+        css = true,
+        css_fn = true,
+        display = {
+          mode = "virtualtext",
+          virtualtext = {
+            character = "●",
+            hl_mode = "background",
+            position = "before"
+          },
+        }
+      }
     },
-  },
+  }
 }

@@ -1,17 +1,9 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    version = false,
-    build = ":TSUpdate",
-    branch = "master",
-    lazy = false,
+    "romus204/tree-sitter-manager.nvim",
+    dependencies = {}, -- tree-sitter CLI must be installed system-wide
     config = function()
-      -- On Windows, prefer downloading pre-compiled binaries
-      require("nvim-treesitter.install").prefer_git = false
-      require("nvim-treesitter.install").compilers = { "zig", "clang", "gcc", "cl" }
-
-      require("nvim-treesitter.configs").setup({
-        modules = {},
+      require("tree-sitter-manager").setup({
         ensure_installed = {
           "astro",
           "c_sharp",
@@ -20,9 +12,6 @@ return {
           "css",
           "csv",
           "dart",
-          -- "git_config",
-          -- "git_rebase",
-          -- "gitattributes",
           "gitcommit",
           "gitignore",
           "go",
@@ -44,28 +33,12 @@ return {
           "vimdoc",
           "vue",
           "yaml",
-        },
-        ignore_install = {},
-        sync_install = true,
-        auto_install = false,
-        highlight = {
-          enable = true,
-          disable = {},
-          -- disable = function(_, buf)
-          -- 	local max_filesize = 512 * 1024 -- 512 KB
-          -- 	local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          -- 	if ok and stats and stats.size > max_filesize then
-          -- 		return true
-          -- 	end
-          -- end,
 
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
         },
+        -- Optional: custom paths
+        -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
+        -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
       })
-    end,
-  },
+    end
+  }
 }
