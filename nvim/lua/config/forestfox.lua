@@ -15,6 +15,7 @@ M.grey3 = "#b2b6a7"
 M.fg0 = "#c3bda3"
 M.fg1 = "#cfc2a4"
 M.fg2 = "#e5d9bc"
+M.fg  = M.fg1  -- default foreground alias
 
 M.bg_red = "#513c40"
 M.dim_red = "#965e67"
@@ -50,5 +51,7 @@ M.bg_orange = "#785335"
 M.dim_orange = "#af7852"
 M.orange = "#eda173"
 M.bright_orange = "#ffa06a"
+
+M.purple = M.magenta  -- no purple in palette; alias to magenta
 
 return M

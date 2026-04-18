@@ -34,6 +34,10 @@ set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "execute the current line" })
 set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "execute the current file" })
 
+-- colorschemes
+set("n", "<leader><leader>e", "<cmd>colorscheme everforest<CR>", { desc = "use the everforest colorscheme" })
+set("n", "<leader><leader>k", "<cmd>colorscheme kanagawa<CR>", { desc = "use the kanagawa colorscheme" })
+
 -- toggle spellcheck
 set("n", "<leader>ss", "<cmd>setlocal spell!<CR>", { desc = "toggle spellcheck" })
 
@@ -46,9 +50,10 @@ set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 set("n", "gr", builtin.lsp_references, { desc = "Show references" })
 
 -- LSP Actions (<leader>l namespace)
+local conform = require("conform")
 set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
-set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer" })
+set("n", "<leader>lf", function() conform.format({ async = true, lsp_fallback = true}) end, { desc = "Format buffer" })
 set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Document symbols" })
 set("n", "<leader>lw", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
 set("n", "<leader>lh", vim.lsp.buf.signature_help, { desc = "Signature help" })

@@ -1,12 +1,5 @@
-return {
-  'goolord/alpha-nvim',
-  dependencies = {
-    'nvim-tree/nvim-web-devicons',
-  },
-  event = 'VimEnter',
-  config = function()
-    local alpha = require 'alpha'
-    local dashboard = require 'alpha.themes.dashboard'
+local alpha = require 'alpha'
+local dashboard = require 'alpha.themes.dashboard'
 
     _Gopts = {
       position = 'center',
@@ -204,7 +197,7 @@ return {
     dashboard.section.buttons.val     = {
       dashboard.button('n', '  New file', ':ene <BAR> startinsert<CR>'),
       dashboard.button('r', '󰄉  Recent files', ':Telescope fd<CR>'),
-      dashboard.button('u', '󱐥  Update plugins', '<cmd>Lazy update<CR>'),
+      dashboard.button('u', '󱐥  Update plugins', '<cmd>lua vim.pack.update()<CR>'),
       dashboard.button('q', '󰿅  Quit', '<cmd>q<CR>'),
       -- dashboard.button('', ''),
     }
@@ -216,24 +209,24 @@ return {
 
     -- dashboard.section.footer.val = vim.split('\n\n' .. getGreeting 'Lazy', '\n')
 
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'LazyVimStarted',
-      desc = 'Add Alpha dashboard footer',
+    -- Set a placeholder footer; update it with startup time after VimEnter
+    dashboard.section.footer.val = {}
+
+    vim.api.nvim_create_autocmd('VimEnter', {
       once = true,
       callback = function()
-        local stats = require('lazy').stats()
-        local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-        dashboard.section.footer.val = {}
+        local ms = (vim.uv.hrtime() - vim.g._start_hrtime) / 1e6 + 0.5
+        local footer = {}
         if fill >= 0 then
-          table.insert(dashboard.section.footer.val, '')
-          table.insert(dashboard.section.footer.val, '')
-          table.insert(dashboard.section.footer.val, '')
+          table.insert(footer, '')
+          table.insert(footer, '')
+          table.insert(footer, '')
         end
-        table.insert(dashboard.section.footer.val,
-          ' Loaded ' .. stats.count .. ' plugins  in ' .. ms .. ' ms ')
+        table.insert(footer, ' Loaded in ' .. string.format("%.2f", ms) .. ' ms ')
         for _ = 1, fill do
-          table.insert(dashboard.section.footer.val, '')
+          table.insert(footer, '')
         end
+        dashboard.section.footer.val = footer
         pcall(vim.cmd.AlphaRedraw)
       end,
     })
@@ -266,5 +259,3 @@ return {
     })
     dashboard.opts.opts.noautocmd = true
     alpha.setup(dashboard.opts)
-  end,
-}

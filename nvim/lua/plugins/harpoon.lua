@@ -1,5 +1,2 @@
-return {
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" }
-}
+-- harpoon is loaded by vim.pack.add; no explicit setup needed
+-- keymaps are defined in lua/keymaps.lua
