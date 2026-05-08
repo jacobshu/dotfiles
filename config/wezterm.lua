@@ -35,7 +35,7 @@ config.color_schemes = {
       "#89e5be",
       "#e5d9bc",
     },
-    background = "#2e373f",
+    background = "#283038",
     foreground = "#cfc2a4",
     selection_fg = "#e5d9bc",
     selection_bg = "#965e67",
@@ -48,7 +48,7 @@ config.colors = {
   tab_bar = {
     background = "#ff0000",
     active_tab = {
-      bg_color = "#2e373f",
+      bg_color = "#283038",
       fg_color = "#cfc2a4",
       intensity = "Bold",
     },

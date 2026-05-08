@@ -19,3 +19,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.fn.mkdir(vim.fn.stdpath("data") .. "/shada", "p")
+
+vim.filetype.add({
+  extension = {
+    p8 = "p8",
+  },
+})
+
+vim.treesitter.language.register("lua", { "p8" })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "p8",
+  callback = function()
+    vim.treesitter.start(nil, "lua")
+  end,
+})

@@ -31,6 +31,14 @@ require("tree-sitter-manager").setup({
           "yaml",
 
   },
+  languages = {
+    pico8 = {
+      install_info = {
+        url = "https://github.com/paradoxskin/tree-sitter-pico8",
+        use_repo_queries = true
+      }
+    }
+  },
   -- Optional: custom paths
   -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
   -- query_dir = vim.fn.stdpath("data") .. "/site/queries",

@@ -1,4 +1,5 @@
 local set = vim.keymap.set
+vim.notify = require("notify")
 
 set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected block down" })
 set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected block down" })
@@ -41,7 +42,7 @@ set("n", "<leader><leader>k", "<cmd>colorscheme kanagawa<CR>", { desc = "use the
 -- toggle spellcheck
 set("n", "<leader>ss", "<cmd>setlocal spell!<CR>", { desc = "toggle spellcheck" })
 
--- LSP Code Navigation (keep 'g' prefix - it's standard)
+-- LSP Code Navigation
 local builtin = require("telescope.builtin")
 set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
@@ -53,14 +54,14 @@ set("n", "gr", builtin.lsp_references, { desc = "Show references" })
 local conform = require("conform")
 set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
-set("n", "<leader>lf", function() conform.format({ async = true, lsp_fallback = true}) end, { desc = "Format buffer" })
+set("n", "<leader>lf", function() conform.format({ async = true, lsp_fallback = true }) end, { desc = "Format buffer" })
 set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Document symbols" })
 set("n", "<leader>lw", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
 set("n", "<leader>lh", vim.lsp.buf.signature_help, { desc = "Signature help" })
 
 -- Diagnostics (<leader>d namespace)
-set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Previous diagnostic" })
+set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" })
 set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic loclist" })
 set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Diagnostic quickfix" })
@@ -116,6 +117,7 @@ set("n", "<leader>ti", vim.cmd.InspectTree, { desc = "Inspect tree sitter AST" }
 -- LSP utilities
 local lsputils = require("lsp")
 set("n", "<leader>ll", lsputils.restart_lsp, { desc = "Restart LSP clients" })
+set("n", "<leader>lp", lsputils.toggle_pico8, { desc = "Toggle pico8-ls / lua_ls" })
 
 -- Git operations (vim-fugitive)
 set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
@@ -172,36 +174,36 @@ end, { desc = "Quick commit (add all + commit)" })
 -- end, { desc = "Git reset hard (dangerous!)" })
 
 -- Gitsigns operations
-local gs = require('gitsigns')
+local gs = require("gitsigns")
 
 -- Navigation
-set('n', ']c', function()
-  if vim.wo.diff then return ']c' end
+set("n", "]c", function()
+  if vim.wo.diff then return "]c" end
   vim.schedule(function() gs.next_hunk() end)
-  return '<Ignore>'
-end, { expr = true, desc = 'Next git hunk' })
+  return "<Ignore>"
+end, { expr = true, desc = "Next git hunk" })
 
-set('n', '[c', function()
-  if vim.wo.diff then return '[c' end
+set("n", "[c", function()
+  if vim.wo.diff then return "[c" end
   vim.schedule(function() gs.prev_hunk() end)
-  return '<Ignore>'
-end, { expr = true, desc = 'Previous git hunk' })
+  return "<Ignore>"
+end, { expr = true, desc = "Previous git hunk" })
 
 -- Hunk operations
-set('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
-set('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset hunk' })
-set('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-  { desc = 'Stage hunk selection' })
-set('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-  { desc = 'Reset hunk selection' })
-set('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
-set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
-set('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
-set('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
-set('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = 'Blame line' })
-set('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
-set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
--- set('n', '<leader>hd', gs.toggle_deleted, { desc = 'Toggle deleted' })
+set("n", "<leader>hs", gs.stage_hunk, { desc = "Stage hunk" })
+set("n", "<leader>hr", gs.reset_hunk, { desc = "Reset hunk" })
+set("v", "<leader>hs", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+  { desc = "Stage hunk selection" })
+set("v", "<leader>hr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+  { desc = "Reset hunk selection" })
+set("n", "<leader>hS", gs.stage_buffer, { desc = "Stage buffer" })
+set("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
+set("n", "<leader>hR", gs.reset_buffer, { desc = "Reset buffer" })
+set("n", "<leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
+set("n", "<leader>hb", function() gs.blame_line { full = true } end, { desc = "Blame line" })
+set("n", "<leader>hd", gs.diffthis, { desc = "Diff this" })
+set("n", "<leader>hD", function() gs.diffthis("~") end, { desc = "Diff this ~" })
+-- set("n", "<leader>hd", gs.toggle_deleted, { desc = "Toggle deleted" })
 
 -- Text object
-set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
+set({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })

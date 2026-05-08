@@ -98,6 +98,16 @@ vimme() {
 
 }
 
+new-p8 () {
+  if [[ $# -ne 1 ]]; then
+    echo "Usage: new-p8 <name>"
+    return 1
+  fi
+  mkdir -p "$1"
+  printf "pico-8 cartridge // http://www.pico-8.com\nversion 43\n__lua__\n" > "$1/$1.p8"
+  printf "-- $1\n-- by jacobshu\n" > "$1/main.lua"
+}
+
 # config for op gh
 source /Users/jacobshu/.config/op/plugins.sh
 

@@ -39,12 +39,40 @@ vim.diagnostic.config({
   },
 })
 
--- Extras
+function M.toggle_pico8()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local clients = vim.lsp.get_clients({ bufnr = bufnr })
+  local has_pico8 = false
+  for _, c in ipairs(clients) do
+    if c.name == "pico8-ls" then has_pico8 = true end
+  end
+  vim.fn.tempname()
+  vim.notify("before " .. vim.treesitter.get_parser(bufnr):lang(), vim.log.levels.INFO)
+  if has_pico8 then
+    vim.treesitter.stop(bufnr)
+    vim.lsp.enable("pico8-ls", false)
+
+    vim.treesitter.start(bufnr, "lua")
+    vim.lsp.enable("lua_ls")
+    vim.notify("Switched to lua_ls", vim.log.levels.INFO)
+  else
+    vim.treesitter.stop(bufnr)
+    vim.lsp.enable("lua_ls", false)
+
+    vim.treesitter.start(bufnr, "pico8")
+    vim.lsp.enable("pico8-ls")
+    vim.notify("Switched to pico8-ls", vim.log.levels.INFO)
+  end
+  vim.notify("after " .. vim.treesitter.get_parser(bufnr):lang(), vim.log.levels.INFO)
+end
+
 function M.restart_lsp(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   local clients
   clients = vim.lsp.get_clients({ bufnr = bufnr })
-  vim.lsp.stop_client(clients)
+  for _, c in ipairs(clients) do
+    c:stop()
+  end
 
   vim.defer_fn(function()
     vim.cmd("edit")
@@ -341,5 +369,6 @@ vim.opt.statusline = table.concat({
   " %l:%c",                -- Line:Column
   " %p%%",                 -- Percentage through file
 }, " ")
+
 
 return M
