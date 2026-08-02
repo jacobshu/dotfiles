@@ -116,3 +116,14 @@ export ANTHROPIC_API_KEY="op://Private/Anthropic API/credential"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+# opencode
+export PATH=/Users/jacobshu/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/jacobshu/.bun/_bun" ] && source "/Users/jacobshu/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
