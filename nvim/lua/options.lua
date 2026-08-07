@@ -2,6 +2,14 @@ local opt = vim.opt
 
 vim.g.mapleader = " "
 
+-- Border for floats we don't open ourselves (rename prompt, vim.ui inputs).
+-- 'winborder' is a string option, so a table-style border in config.float
+-- applies only where we pass opts explicitly.
+local float_border = require("config.float").border
+if type(float_border) == "string" then
+  vim.o.winborder = float_border
+end
+
 opt.guicursor = "a:block,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- You have to turn this one on :)

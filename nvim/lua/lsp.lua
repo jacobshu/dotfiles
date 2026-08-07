@@ -1,5 +1,7 @@
 local M = {}
 
+local float = require('config.float')
+
 -- Load lua_ls configuration from separate file
 local lua_ls_config = require('lsp.lua_ls')
 
@@ -21,9 +23,14 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  float = {
-    border = "rounded",
-    source = true,
+  -- A function, not a table, so the size caps track terminal resizes.
+  float = function() return float.opts({ source = true }) end,
+  -- Show the diagnostic float after [d / ]d. Replaces the deprecated
+  -- jump({ float = true }); border and sizing still come from `float` above.
+  jump = {
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+    end,
   },
   signs = {
     text = {

@@ -1,4 +1,5 @@
 local set = vim.keymap.set
+local float = require("config.float")
 vim.notify = require("notify")
 
 set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected block down" })
@@ -29,7 +30,7 @@ set("n", "<leader>j", "<cmd>lprev<CR>zz")
 set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "search and replace word under cursor" })
 
-set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
+set("n", "K", function() vim.lsp.buf.hover(float.opts()) end, { desc = "LSP hover documentation" })
 
 -- execute file
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "execute the current line" })
@@ -57,11 +58,11 @@ set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
 set("n", "<leader>lf", function() conform.format({ async = true, lsp_fallback = true }) end, { desc = "Format buffer" })
 set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "Document symbols" })
 set("n", "<leader>lw", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
-set("n", "<leader>lh", vim.lsp.buf.signature_help, { desc = "Signature help" })
+set("n", "<leader>lh", function() vim.lsp.buf.signature_help(float.opts()) end, { desc = "Signature help" })
 
 -- Diagnostics (<leader>d namespace)
-set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Previous diagnostic" })
-set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" })
+set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Previous diagnostic" })
+set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next diagnostic" })
 set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic loclist" })
 set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Diagnostic quickfix" })
