@@ -23,6 +23,10 @@ target = "wezterm.lua"
 win_target = ".config/wezterm/wezterm.lua"
 
 [[dotfiles]]
+source = "dev/dotfiles/config/Microsoft.PowerShell_profile.ps1"
+win_target = "%DOCUMENTS%/PowerShell/Microsoft.PowerShell_profile.ps1"
+
+[[dotfiles]]
 source = "dev/dotfiles/config/tmux.conf"
 target = ".config/tmux/tmux.conf"
 

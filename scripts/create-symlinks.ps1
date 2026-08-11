@@ -13,7 +13,8 @@
       against this repository's root, so the repo can live anywhere.
     - `win_target` paths are relative to $HOME unless they are absolute
       (e.g. C:\... ) or contain environment variables (e.g. %LOCALAPPDATA%\nvim),
-      which are expanded.
+      which are expanded. The pseudo-variable %DOCUMENTS% resolves to the
+      user's Documents folder (honoring OneDrive/folder redirection).
     - Existing targets that are not already the correct symlink are backed
       up to <target>.bak-<timestamp> unless -Force is passed, in which case
       they are removed.
@@ -58,7 +59,11 @@ function Resolve-SourcePath {
 
 function Resolve-TargetPath {
     param([string]$Path)
-    $expanded = [Environment]::ExpandEnvironmentVariables($Path) -replace '/', '\'
+    # %DOCUMENTS% resolves to the real Documents folder, which may be
+    # redirected (e.g. to OneDrive) and thus has no environment variable.
+    $documents = [Environment]::GetFolderPath('MyDocuments')
+    $expanded = $Path.Replace('%DOCUMENTS%', $documents)
+    $expanded = [Environment]::ExpandEnvironmentVariables($expanded) -replace '/', '\'
     if ([System.IO.Path]::IsPathRooted($expanded)) {
         return $expanded
     }
