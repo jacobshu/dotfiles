@@ -4,44 +4,42 @@ version = "1.1"
 [[dotfiles]]
 source = "dev/dotfiles/config/forestfox.yaml"
 target = ".warp/themes/forestfox.yaml"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/starship.toml"
 target = ".config/starship.toml"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/.zshrc"
 target = ".config/zsh/.zshrc"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/.zprofile"
 target = ".zprofile"
-isFile = true
+
+[[dotfiles]]
+source = "dev/dotfiles/config/wezterm.lua"
+target = "wezterm.lua"
+win_target = ".config/wezterm/wezterm.lua"
 
 [[dotfiles]]
 source = "dev/dotfiles/config/tmux.conf"
 target = ".config/tmux/tmux.conf"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/config"
 target = ".config/ghostty/config"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/config/forestfox"
 target = ".config/ghostty/themes/forestfox"
-isFile = true
 
 [[dotfiles]]
 source = "dev/dotfiles/nvim"
 target = ".config/nvim"
-isFile = false
+win_target = "%LOCALAPPDATA%/nvim"
 
 [[dotfiles]]
 source = "dev/dotfiles/bin/netcoredbg"
 target = "/usr/local/bin/netcoredbg"
-isFile = false
+

@@ -98,13 +98,20 @@ link_one() {
 source_rel=""
 target_rel=""
 
-while IFS= read -r line; do
+process_entry() {
+  if [[ -n "${source_rel}" && -n "${target_rel}" ]]; then
+    link_one "$(resolve_path "${source_rel}")" "$(resolve_path "${target_rel}")"
+  fi
+  source_rel=""
+  target_rel=""
+}
+
+while IFS= read -r line || [[ -n "${line}" ]]; do
   line="$(echo "${line}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 
   case "${line}" in
     '[[dotfiles]]')
-      source_rel=""
-      target_rel=""
+      process_entry
       ;;
     source\ =\ *)
       source_rel="${line#source = }"
@@ -116,13 +123,8 @@ while IFS= read -r line; do
       target_rel="${target_rel%\"}"
       target_rel="${target_rel#\"}"
       ;;
-    isFile\ =\ *)
-      # isFile isn't needed for linking (ln -s handles files and dirs
-      # identically) but once both source and target are known we can
-      # process the entry.
-      if [[ -n "${source_rel}" && -n "${target_rel}" ]]; then
-        link_one "$(resolve_path "${source_rel}")" "$(resolve_path "${target_rel}")"
-      fi
-      ;;
   esac
 done < "${TOML_FILE}"
+
+# Process the final entry.
+process_entry
