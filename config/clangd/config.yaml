@@ -1,0 +1,77 @@
+# User-level clangd config. Symlinked to %LOCALAPPDATA%/clangd/config.yaml.
+#
+# Why this file exists: the C++ projects I work in build from .vcxproj via
+# MSBuild, which emits no compile_commands.json. Without a compilation
+# database clangd guesses its flags, which on Windows means it cannot find
+# <windows.h>, does not know the project defines, and so resolves nothing
+# outside the open file. These flags stand in for that database.
+#
+# Scope: this file holds only what is true of any Windows/MSVC C++ project.
+# Per-project include paths and diagnostic suppressions live in a .clangd
+# file in that project's own repo. clangd merges the two, nearest-last, so
+# a project can add to or override anything here.
+#
+# Paths are absolute because clangd's config format has no variable
+# expansion. Both are version-pinned and need a nudge when Visual Studio or
+# the Windows SDK is upgraded:
+#   - MSVC 14.44.35207 is deliberately newer than the v141/v142 toolsets the
+#     .vcxproj files ask for. clangd only parses, never builds, and one
+#     modern header set covers every project -- including the one using C++20
+#     coroutines, which the v141 headers do not have. Pinning per-toolset
+#     meant branching this file three ways for no gain.
+#   - Windows SDK 10.0.26100.0 is the newest installed. The projects declare
+#     10.0.17763.0, which is not on this machine; Visual Studio retargets it.
+
+CompileFlags:
+  Compiler: clang++
+  Add:
+    # MSVC compatibility. Without these, clangd rejects the Microsoft
+    # extensions that Windows and MFC headers are full of.
+    - --target=x86_64-pc-windows-msvc
+    - -fms-compatibility
+    - -fms-extensions
+    - -fms-compatibility-version=19.44
+    - -fdelayed-template-parsing
+    # No -std here on purpose: the language standard is inherently
+    # per-project, and a flag set in this file lands after the project
+    # .clangd files, so it would silently win over them. Each project sets
+    # its own -std.
+
+    # Defines every one of these projects' Debug configurations sets.
+    # <CharacterSet>MultiByte</CharacterSet> is why _MBCS is set and
+    # UNICODE/_UNICODE are not -- defining those would flip every Windows API
+    # to its wide-char variant and mismatch the actual build.
+    - -DWIN32
+    - -D_WINDOWS
+    - -D_DEBUG
+    - -D_MBCS
+    # <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary> is the /MD switch.
+    - -D_MT
+    - -D_DLL
+
+    # MSVC's own standard library, its MFC/ATL headers, then the Windows SDK.
+    - -isystem
+    - C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/include
+    - -isystem
+    - C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/atlmfc/include
+    - -isystem
+    - C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt
+    - -isystem
+    - C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um
+    - -isystem
+    - C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared
+    - -isystem
+    - C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/winrt
+
+  # Drop switches only cl.exe understands, in case a real
+  # compile_commands.json shows up later carrying them.
+  Remove:
+    - /Zc*
+    - /permissive*
+    - /analyze*
+
+Diagnostics:
+  UnusedIncludes: None
+
+Index:
+  StandardLibrary: Yes

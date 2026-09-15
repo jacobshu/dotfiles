@@ -1,5 +1,43 @@
--- DAP configurations go here
 local dap = require("dap")
+
+---match the artifact named after the project first, and only guess after.
+---@param patterns string[] glob patterns to search, in priority order
+---@param names string[] extra artifact basenames to prefer, highest first
+---@return string
+local function pick_artifact(patterns, names)
+  local cwd = vim.fn.getcwd()
+
+  -- prefer whatever was passed in, then the directory name,
+  -- then any .sln or project file sitting at the root.
+  local wanted = vim.list_extend({}, names or {})
+  table.insert(wanted, vim.fs.basename(cwd))
+  for _, glob in ipairs({ "/*.sln", "/*.csproj", "/*.vcxproj" }) do
+    for _, f in ipairs(vim.fn.glob(cwd .. glob, false, true)) do
+      table.insert(wanted, vim.fn.fnamemodify(f, ":t:r"))
+    end
+  end
+
+  local found = {}
+  for _, pattern in ipairs(patterns) do
+    vim.list_extend(found, vim.fn.glob(cwd .. pattern, false, true))
+  end
+
+  for _, name in ipairs(wanted) do
+    for _, artifact in ipairs(found) do
+      if vim.fn.fnamemodify(artifact, ":t:r"):lower() == name:lower() then
+        return artifact
+      end
+    end
+  end
+
+  for _, artifact in ipairs(found) do
+    if not artifact:match("[Tt]ests?%.%a+$") then
+      return artifact
+    end
+  end
+
+  return vim.fn.input("Path to artifact: ", cwd, "file")
+end
 
 -- .NET Core debugger adapter configuration
 dap.adapters.coreclr = {
@@ -7,42 +45,16 @@ dap.adapters.coreclr = {
   command = 'C:/Program Files/netcoredbg/netcoredbg.exe',
   args = { '--interpreter=vscode' }
 }
-
 -- .NET debugging configurations
 dap.configurations.cs = {
   {
     type = "coreclr",
     name = "launch - netcoredbg",
     request = "launch",
+    -- Glob any target framework rather than a hardcoded list. The old list
+    -- stopped at net8.0, so net10.0 projects (zdApi, zdAuth) never matched.
     program = function()
-      -- Try to find the main assembly in common build paths
-      local cwd = vim.fn.getcwd()
-      local possible_paths = {
-        cwd .. "/bin/Debug/net8.0/*.dll",
-        cwd .. "/bin/Debug/net7.0/*.dll",
-        cwd .. "/bin/Debug/net6.0/*.dll",
-        cwd .. "/bin/Debug/netcoreapp3.1/*.dll",
-        cwd .. "/*/bin/Debug/net8.0/*.dll",
-        cwd .. "/*/bin/Debug/net7.0/*.dll",
-        cwd .. "/*/bin/Debug/net6.0/*.dll",
-      }
-      
-      for _, pattern in ipairs(possible_paths) do
-        local matches = vim.fn.glob(pattern, false, true)
-        if #matches > 0 then
-          -- Filter out test assemblies and prefer the main assembly
-          for _, match in ipairs(matches) do
-            if not string.match(match, "%.Test%.") and not string.match(match, "%.Tests%.") then
-              return match
-            end
-          end
-          -- If no non-test assembly found, return the first one
-          return matches[1]
-        end
-      end
-      
-      -- Fallback: ask user to input the path
-      return vim.fn.input('Path to dll: ', cwd .. '/bin/Debug/', 'file')
+      return pick_artifact({ "/bin/Debug/*/*.dll", "/*/bin/Debug/*/*.dll" }, {})
     end,
     cwd = '${workspaceFolder}',
     stopAtEntry = false,
@@ -73,6 +85,50 @@ dap.configurations.cs = {
     cwd = '${workspaceFolder}',
   }
 }
+
+
+-- C++ (MSVC) debugging via codelldb.
+local codelldb = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb.exe"
+
+dap.adapters.codelldb = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = codelldb,
+    args = { "--port", "${port}" },
+  },
+}
+
+dap.configurations.cpp = {
+  {
+    name = "launch - codelldb",
+    type = "codelldb",
+    request = "launch",
+    -- Echo.vcxproj puts its output at $(SolutionDir)$(Configuration)\, so
+    -- from the Echo repo root that is Debug/Echo.exe.
+    program = function()
+      return pick_artifact({ "/Debug/*.exe", "/x64/Debug/*.exe" }, {})
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    console = "integratedTerminal",
+  },
+  {
+    -- The NX_* drivers build as DLLs, so they cannot be launched at all --
+    -- Echo loads them. Attaching to a running Echo.exe is the only way to
+    -- put a breakpoint in driver code.
+    name = "attach to process - codelldb",
+    type = "codelldb",
+    request = "attach",
+    pid = function()
+      return require("dap.utils").pick_process()
+    end,
+    cwd = "${workspaceFolder}",
+  },
+}
+
+-- Drivers and Echo share the same toolchain and layout.
+dap.configurations.c = dap.configurations.cpp
 
 -- Key mappings for debugging
 vim.keymap.set('n', '<F12>', function() dap.continue() end, { desc = 'Debug: Start/Continue' })

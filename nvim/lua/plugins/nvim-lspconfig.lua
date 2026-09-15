@@ -1,15 +1,21 @@
-require("mason").setup()
+require("mason").setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    -- Crashdummyy's registry carries the Roslyn build that ships with the
+    -- VS Code C# extension. mason-org's own `roslyn-language-server` comes
+    -- from nuget.org and lags behind what roslyn.nvim requires.
+    "github:Crashdummyy/mason-registry",
+  },
+})
 
 require("mason-lspconfig").setup({
   ensure_installed = {
     "astro",
     "bashls",
     "clangd",
-    "csharp_ls",
     "eslint",
     "gopls",
     "lua_ls",
-    "oxfmt",
     "powershell_es",
     "ts_ls",
     "vue_ls",
@@ -23,7 +29,6 @@ vim.lsp.config("pico8-ls", {
   root_markers = { ".p8", ".git" },
 })
 
--- Configure clangd with a compile-commands-dir fallback
 vim.lsp.config("clangd", {
   cmd = {
     "clangd",
@@ -33,14 +38,10 @@ vim.lsp.config("clangd", {
   },
   capabilities = {
     general = {
-      -- Standard LSP 3.17 positionEncodings replaces deprecated clangd offsetEncoding extension
       positionEncodings = { "utf-16" },
     },
   },
   before_init = function(params, config)
-    -- Strip the deprecated clangd-specific offsetEncoding extension from the
-    -- InitializeParams Neovim sends. Neovim adds it via make_client_capabilities()
-    -- regardless of user config; clangd 23 will drop support for it.
     if params and params.capabilities then
       params.capabilities.offsetEncoding = nil
     end

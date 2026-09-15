@@ -15,7 +15,6 @@ vim.pack.add({
 
   -- Plugins
   "https://github.com/S1M0N38/love2d.nvim",
-  "https://github.com/ThePrimeagen/99",
   "https://github.com/catgoose/nvim-colorizer.lua",
   "https://github.com/echasnovski/mini.nvim",
   "https://github.com/folke/which-key.nvim",
@@ -32,13 +31,14 @@ vim.pack.add({
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/rebelot/kanagawa.nvim",
   "https://github.com/romus204/tree-sitter-manager.nvim",
+  "https://github.com/seblyng/roslyn.nvim",
+  "https://github.com/sphamba/smear-cursor.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/tpope/vim-fugitive",
   { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 })
 
 -- Load plugin configurations
-require("plugins.99")
 require("plugins.alpha")
 require("plugins.cmp")
 require("plugins.colorizer")
@@ -54,6 +54,8 @@ require("plugins.mini")
 require("plugins.nvim-dap")
 require("plugins.nvim-lspconfig")
 require("plugins.nvim-notify")
+require("plugins.roslyn")
+require("plugins.smear-cursor")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.undotree")

@@ -22,7 +22,7 @@ opt.ignorecase = true
 opt.number = true
 opt.relativenumber = true
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = false
 
 opt.tabstop = 2
@@ -50,3 +50,14 @@ opt.isfname:append("@-@")
 opt.updatetime = 50
 
 opt.colorcolumn = "80"
+
+-- Mapping timeouts.
+-- 'timeoutlen' is how long Neovim waits for the rest of a mapped sequence.
+-- The default 1000 makes any bare map that is also the prefix of a longer one
+-- (<leader>d, <leader>s, gr) feel like a hang. 400 is short enough that a
+-- collision reads as a beat instead of a freeze, and long enough to still
+-- type <leader>fw comfortably. which-key's own popup delay is 300.
+opt.timeoutlen = 400
+-- 'ttimeoutlen' is a different clock: it times terminal escape sequences.
+-- Keep it tiny so <Esc> out of insert mode is instant.
+opt.ttimeoutlen = 10

@@ -67,16 +67,6 @@ set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic loclist" })
 set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Diagnostic quickfix" })
 
--- CodeCompanion
-set({ "n", "v" }, "<Leader>ia", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-set({ "n", "v" }, "<Leader>ic", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-set("v", "<Leader>ah", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
-local _99 = require("99")
-set("n", "<leader>9f", function() _99.fill_in_function() end, { desc = "fill in function" })
-set("v", "<leader>9v", function() _99.visual() end, { desc = "something visual" })
-set("v", "<leader>9s", function() _99.stop_all_requests() end, { desc = "cancel request" })
-
 -- harpoon
 local harpoon = require("harpoon")
 -- harpoon:setup()

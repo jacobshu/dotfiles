@@ -47,3 +47,7 @@ win_target = "%LOCALAPPDATA%/nvim"
 source = "dev/dotfiles/bin/netcoredbg"
 target = "/usr/local/bin/netcoredbg"
 
+[[dotfiles]]
+source = "dev/dotfiles/config/clangd/config.yaml"
+target = ".config/clangd/config.yaml"
+win_target = "%LOCALAPPDATA%/clangd/config.yaml"
