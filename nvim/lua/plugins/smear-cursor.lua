@@ -12,11 +12,8 @@ require("smear_cursor").setup({
   -- and the rest of the UI stays forestfox under kanagawa anyway.
   cursor_color = ff.fg,
 
-  -- options.lua sets `guicursor = "a:block,..."` -- block in *every* mode,
-  -- including insert and replace. Both of these default to true, which would
-  -- draw a thin bar smear against a block cursor.
-  vertical_bar_cursor_insert_mode = false,
-  horizontal_bar_cursor_replace_mode = false,
+  -- vertical_bar_cursor_insert_mode = false,
+  -- horizontal_bar_cursor_replace_mode = false,
 
   -- Leave `legacy_computing_symbols_support` at its default of false. Turning
   -- it on makes the smear blend better, but only if the terminal font carries

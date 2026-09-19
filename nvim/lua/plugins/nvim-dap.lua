@@ -130,17 +130,6 @@ dap.configurations.cpp = {
 -- Drivers and Echo share the same toolchain and layout.
 dap.configurations.c = dap.configurations.cpp
 
--- Key mappings for debugging
-vim.keymap.set('n', '<F12>', function() dap.continue() end, { desc = 'Debug: Start/Continue' })
-vim.keymap.set('n', '<F1>', function() dap.step_into() end, { desc = 'Debug: Step Into' })
-vim.keymap.set('n', '<F2>', function() dap.step_over() end, { desc = 'Debug: Step Over' })
-vim.keymap.set('n', '<F3>', function() dap.step_out() end, { desc = 'Debug: Step Out' })
-vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { desc = 'Debug: Toggle Breakpoint' })
-vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, { desc = 'Debug: Set Conditional Breakpoint' })
-vim.keymap.set('n', '<leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { desc = 'Debug: Set Log Point' })
-vim.keymap.set('n', '<leader>dr', function() dap.repl.open() end, { desc = 'Debug: Open REPL' })
-vim.keymap.set('n', '<leader>dl', function() dap.run_last() end, { desc = 'Debug: Run Last' })
-
 -- DAP UI integration
 local dapui = require("dapui")
 
@@ -235,3 +224,46 @@ require("dapui").setup({
     max_value_lines = 100, -- Can be integer or nil.
   }
 })                         -- UI setup
+
+-- Keymaps. Defined last so `dapui` is already in scope.
+--
+-- Everything debug lives under <leader>D. It moved here from <leader>b,
+-- <leader>B, <leader>lp, <leader>dr and <leader>dl, all of which collided:
+-- <leader>lp lost to the pico8-ls toggle and <leader>dl lost to the
+-- diagnostic loclist, so log-point and run-last were silently dead, and
+-- <leader>dr sat behind the bare <leader>d blackhole-delete operator, which
+-- stalls every <leader>d press for `timeoutlen`.
+--
+-- <leader>D was unmapped and reads as Debug. Nothing else in the config
+-- uses it, and there is no bare <leader>D mapping, so no press stalls.
+local function dbg(lhs, fn, desc, mode)
+  vim.keymap.set(mode or "n", "<leader>D" .. lhs, fn, { desc = "Debug: " .. desc })
+end
+
+dbg("c", function() dap.continue() end, "Start / continue")
+dbg("i", function() dap.step_into() end, "Step into")
+dbg("o", function() dap.step_over() end, "Step over")
+dbg("O", function() dap.step_out() end, "Step out")
+dbg("t", function() dap.terminate() end, "Terminate session")
+dbg("R", function() dap.restart() end, "Restart session")
+
+dbg("b", function() dap.toggle_breakpoint() end, "Toggle breakpoint")
+dbg("B", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, "Conditional breakpoint")
+dbg("p", function()
+  dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, "Log point")
+
+dbg("r", function() dap.repl.open() end, "Open REPL")
+dbg("l", function() dap.run_last() end, "Run last")
+dbg("u", function() dapui.toggle() end, "Toggle UI")
+-- Inspect the value under the cursor, or the visual selection.
+dbg("e", function() dapui.eval() end, "Eval", { "n", "v" })
+
+-- The F-keys stay as the fast path for repeated stepping mid-session; typing
+-- <leader>Do over and over is no way to walk a loop. Note <F1> shadows :help.
+vim.keymap.set("n", "<F12>", function() dap.continue() end, { desc = "Debug: Start/Continue" })
+vim.keymap.set("n", "<F1>", function() dap.step_into() end, { desc = "Debug: Step Into" })
+vim.keymap.set("n", "<F2>", function() dap.step_over() end, { desc = "Debug: Step Over" })
+vim.keymap.set("n", "<F3>", function() dap.step_out() end, { desc = "Debug: Step Out" })
