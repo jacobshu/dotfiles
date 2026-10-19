@@ -136,6 +136,21 @@ Notes on the awkward ones:
 - **.NET Framework** targets cannot be debugged from Neovim at all.
   `netcoredbg` is CoreCLR-only.
 
+#### GitHub PR review
+
+`octo.nvim` handles reading, reviewing, line-commenting and approving pull
+requests without leaving the editor, under the `<leader>o` prefix. It needs
+the `gh` CLI authenticated (`gh auth status`); plenary, telescope and
+nvim-web-devicons were already here.
+
+Inside a review, octo's buffer-local maps are on `<localleader>` -- unset
+here, so `\`. `\ca` comments on the line or visual selection, `]q`/`[q` walk
+the file panel. Comments queue as a pending review and go up together on
+submit, where `<C-a>` approves and `<C-r>` requests changes.
+
+`Octo review discard` throws a pending review away if you start one by
+mistake.
+
 #### Formatting
 
 `conform.nvim` handles formatting, bound to `<leader>lf`. `oxfmt` covers

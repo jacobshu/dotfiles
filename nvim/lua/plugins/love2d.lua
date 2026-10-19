@@ -3,7 +3,3 @@ require("love2d").setup({
   restart_on_save = false,
   debug_window_opts = { split = "below" },
 })
-
-vim.keymap.set('n', '<leader>v',  function() end,                   { desc = "LÖVE" })
-vim.keymap.set('n', '<leader>vv', '<cmd>LoveRun<cr>',               { desc = "Run LÖVE" })
-vim.keymap.set('n', '<leader>vs', '<cmd>LoveStop<cr>',              { desc = "Stop LÖVE" })

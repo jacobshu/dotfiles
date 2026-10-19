@@ -28,6 +28,7 @@ vim.pack.add({
   "https://github.com/neanias/everforest-nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/pwntester/octo.nvim",
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/rebelot/kanagawa.nvim",
   "https://github.com/romus204/tree-sitter-manager.nvim",
@@ -54,6 +55,7 @@ require("plugins.mini")
 require("plugins.nvim-dap")
 require("plugins.nvim-lspconfig")
 require("plugins.nvim-notify")
+require("plugins.octo")
 require("plugins.roslyn")
 require("plugins.smear-cursor")
 require("plugins.telescope")
