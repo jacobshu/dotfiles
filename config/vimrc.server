@@ -1,0 +1,85 @@
+" ~/.vimrc -- slim config
+"
+set nocompatible
+
+" --- behaviour ---------------------------------------------------------
+set backspace=indent,eol,start   " vi defaults make backspace useless
+set hidden                       " let buffers go unsaved in the background
+set autoread
+set ttyfast
+
+" --- indentation -------------------------------------------------------
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+
+" --- display -----------------------------------------------------------
+set number
+set relativenumber
+set scrolloff=8
+set wrap
+set wildmenu
+set wildmode=longest:full,full
+silent! set signcolumn=yes
+silent! set colorcolumn=80
+silent! set laststatus=2
+silent! syntax on
+silent! filetype plugin indent on
+
+" --- search ------------------------------------------------------------
+set ignorecase
+set smartcase
+silent! set incsearch
+silent! set nohlsearch
+
+" --- files -------------------------------------------------------------
+" No swap or backup litter
+set noswapfile
+set nobackup
+set nowritebackup
+silent! set undodir=~/.vim/undo
+silent! set undofile
+set updatetime=250
+
+" --- keys --------------------------------------------------------------
+
+" move the visual selection up and down, reindenting as it lands
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" keep the shifted selection selected
+vnoremap < <gv
+vnoremap > >gv
+
+" paste over a selection without the replaced text clobbering the register
+xnoremap <Space>p "_dP
+
+" delete into the black hole
+nnoremap <Space>d "_d
+vnoremap <Space>d "_d
+
+" Q drops into Ex mode by accident more often than anyone wants it
+nnoremap Q <Nop>
+
+" quickfix and location list, centred on landing
+nnoremap <C-k> :cnext<CR>zz
+nnoremap <C-j> :cprev<CR>zz
+nnoremap <Space>k :lnext<CR>zz
+nnoremap <Space>j :lprev<CR>zz
+
+" substitute the word under the cursor through the file
+nnoremap <Space>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+nnoremap <Space>S :setlocal spell!<CR>
+
+" netrw, and window movement
+nnoremap <Space>pv :Explore<CR>
+nnoremap <Space>ph <C-w>h
+nnoremap <Space>pj <C-w>j
+nnoremap <Space>pk <C-w>k
+nnoremap <Space>pl <C-w>l
+
+" clear search highlight
+nnoremap <Space><Space> :nohlsearch<CR>
